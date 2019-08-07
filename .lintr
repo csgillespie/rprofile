@@ -1,0 +1,5 @@
+linters: with_defaults(
+    assignment_linter = NULL,
+    line_length_linter(100),
+    NULL
+  )
