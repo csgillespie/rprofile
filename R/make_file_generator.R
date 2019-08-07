@@ -33,9 +33,10 @@ create_make_functions = function() {
   make_list = system2("make", args = c("-f", tmp_make, "rprofile-list"), stdout = TRUE)
 
   # Add basic make to list
-  make_list = c("make", make_list)
+  make_list = c("", make_list)
   # Create function names
   make_names = paste0("make_", make_list)
+  make_names[1] = "make"
   # Create functions
   l = lapply(make_list, make_fun_factory)
   names(l) = make_names
