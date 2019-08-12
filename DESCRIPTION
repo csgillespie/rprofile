@@ -23,7 +23,8 @@ Imports:
     devtools,
     stringr,
     purrr,
-    gert
+    gert, 
+    remotes
 Suggests:
     lintr,
     testthat

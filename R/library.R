@@ -38,6 +38,7 @@ display_matches = function(matches) {
   cat(multicol(paste0(sprintf(paste0("%", width_nums, "s"), nums), "| ", matches)), sep = "")
 }
 
+#' @importFrom remotes install_github
 # From gaborcsardi/crayon/R/utils.r
 multicol = function(x) {
   xs = x
