@@ -22,7 +22,8 @@ Imports:
     glue,
     devtools,
     stringr,
-    purrr
+    purrr,
+    gert
 Suggests:
     lintr,
     testthat

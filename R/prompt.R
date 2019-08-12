@@ -15,15 +15,25 @@ grey = function () {
 #' @import crayon
 #' @import prompt
 #' @import clisymbols
+#' @importFrom gert git_status
 #' @export
 rstudio_prompt = function (expr, value, ok, visible) {
   status = if (ok) crayon::green(clisymbols::symbol$tick)
   else crayon::red(clisymbols::symbol$cross)
 
   mem = display_memuse()
+  status = try(gert::git_status(), silent = TRUE)
+  is_git = class(status) != "try_error"
+  if (all(is_git)) {
+    git = paste0("[",
+                 prompt::git_branch(),
+                 prompt::git_dirty(),
+                 prompt::git_arrows(),
+                 "]")
+  } else {
+    git = ""
+  }
 
-  git = prompt:::git_info()
-  if (nchar(git) > 0) git = paste0("[", git, "]")
   paste0(status, " ",
          grey()(mem),
          #       crayon::blue(pkg))
