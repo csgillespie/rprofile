@@ -22,8 +22,8 @@ rstudio_prompt = function (expr, value, ok, visible) {
   else crayon::red(clisymbols::symbol$cross)
 
   mem = display_memuse()
-  status = try(gert::git_status(), silent = TRUE)
-  is_git = class(status) != "try_error"
+  gstatus = try(gert::git_status(), silent = TRUE)
+  is_git = class(gstatus) != "try-error"
   if (all(is_git)) {
     git = paste0("[",
                  prompt::git_branch(),
