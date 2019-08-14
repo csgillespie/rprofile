@@ -3,6 +3,7 @@
 get_wifi = function() {
 #  start_locs = c(1, 9, 25, 32, 38, 50, 58, 64)
   wifi = system2("nmcli", args = c("dev", "wifi"), stdout = TRUE)
+  if (length(wifi) == 0L) return("-")
   start_locs = stringr::str_locate(wifi[1],
                                    c("IN-USE", "SSID", "MODE",
                                      "CHAN", "RATE", "SIGNAL",
@@ -16,10 +17,10 @@ get_wifi = function() {
   wifi_name = stringr::str_trim(wifi_name)
 
   # wifi_signal
-  wifi_signal = paste(wifi[start_locs[6]:(start_locs[7]-1)], collapse = "")
+  wifi_signal = paste(wifi[start_locs[6]:(start_locs[7] - 1)], collapse = "")
   wifi_signal = stringr::str_trim(wifi_signal)
 
-  wifi_rate = paste(wifi[start_locs[5]:(start_locs[6]-1)], collapse = "")
+  wifi_rate = paste(wifi[start_locs[5]:(start_locs[6] - 1)], collapse = "")
   wifi_rate = stringr::str_trim(wifi_rate)
   strength = if (wifi_signal > 70) {
     green(wifi_signal)
