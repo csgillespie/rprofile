@@ -1,3 +1,5 @@
+#ip link
+#cat /sys/class/net/<interface>/speed
 
 
 get_wifi = function() {
@@ -13,7 +15,7 @@ get_wifi = function() {
   wifi = strsplit(wifi, "")[[1]]
 
   # wifi_name
-  wifi_name = paste(wifi[start_locs[2]:(start_locs[3]-1)], collapse = "")
+  wifi_name = paste(wifi[start_locs[2]:(start_locs[3] - 1)], collapse = "")
   wifi_name = stringr::str_trim(wifi_name)
 
   # wifi_signal
@@ -42,6 +44,9 @@ get_r_sessions = function() {
 }
 
 
+#' Customised Startup info
+#'
+#' Currently prints the numbe of Rsessions running and wifi details.
 #' @export
 startup_info = function() {
   cat("\014")

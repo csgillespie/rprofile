@@ -3,6 +3,17 @@ ip = function(path = getwd()) {
   op(path)
 }
 
+#' @title RStudio projects
+#'
+#' A command line version of opening RStudio projects.
+#' @param path Path to the (proposed) RStudio project.
+#' @examples
+#' \dontrun{
+#' # Open project in current working directory
+#' op()
+#' # Open project in current working directory
+#' op("/path/to/project")
+#' }
 #' @export
 op = function(path = ".") {
   path = normalizePath(path)
@@ -10,7 +21,7 @@ op = function(path = ".") {
   if (grepl("\\.Rproj$", path)) {
     setwd(dirname(path))
     rstudioapi::openProject(path)
-  } else  if (length(proj) == 0L) {
+  } else if (length(proj) == 0L) {
     message("No available project.")
     create_project = readline(prompt = "Create (y/N): ")
     if (tolower(create_project) == "y") {
@@ -22,6 +33,14 @@ op = function(path = ".") {
   }
 }
 
+#' @title Choose RStudio project
+#'
+#' Command line version for choosing RStudio projects
+#' @param path Default \code{NULL}. If not \code{NULL}, path is passed to \code{op}.
+#' @examples
+#' \dontrun{
+#' cp()
+#' }
 #' @export
 cp = function(path = NULL) {
   if (!is.null(path)) {

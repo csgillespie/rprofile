@@ -2,29 +2,32 @@ Type: Package
 Package: rprofile
 Title: My Rprofile in a Handy R package
 Version: 0.1.0
-Authors@R: person(given="Colin", family="Gillespie",
-    email="csgillespie@gmail.com", role = c("aut", "cre"))
+Authors@R: 
+    person(given = "Colin",
+           family = "Gillespie",
+           role = c("aut", "cre"),
+           email = "csgillespie@gmail.com")
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
-Description: My helper functions and set-up used in my .Rprofile. Moving everything into a function
-    makes it much easier to have helper functions.
+Description: My helper functions and set-up used in my
+    .Rprofile. Moving everything into a function makes it much easier to
+    have helper functions.
 License: GPL-2 | GPL-3
 Imports: 
     clisymbols,
     colorout,
     crayon,
+    gert,
+    glue,
+    memoise,
     memuse,
     prettycode,
     prompt,
-    rdoc,
-    rlang,
-    memoise,
-    rstudioapi,
-    glue,
-    devtools,
-    stringr,
     purrr,
-    gert, 
-    remotes
+    rdoc,
+    remotes,
+    rlang,
+    rstudioapi,
+    stringr
 Suggests:
     lintr,
     testthat

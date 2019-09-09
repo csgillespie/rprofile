@@ -54,7 +54,7 @@ multicol = function(x) {
 }
 
 # TODO: use lighter version of install_github
-#' @importFrom devtools install_github
+#' @importFrom remotes install_github
 autoinst = function(package, ...) {
   has_loaded = try(base::library(as.character(substitute(package)), character.only = TRUE),
                    silent = TRUE)
@@ -71,7 +71,7 @@ autoinst = function(package, ...) {
     return(invisible(NULL))
   }
 
-  if (is.null(tryCatch(utils::packageVersion("devtools"), error = function(e) NULL))) {
+  if (is.null(tryCatch(utils::packageVersion("remotes"), error = function(e) NULL))) {
     return(invisible(NULL))
   }
   gh_pkgs = gh_pkg(pkg)

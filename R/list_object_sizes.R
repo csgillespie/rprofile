@@ -27,11 +27,10 @@ ls.objects = function(pos = 1, pattern, order.by,
   out
 }
 
-
-
-#' @export
 lsos = function(..., n = 10) {
-  ls.objects(..., order.by = "Size",
-             decreasing = TRUE, head = TRUE,
+  ls.objects(...,
+             order.by = "Size",
+             decreasing = TRUE,
+             head = TRUE,
              n = n)
 }
