@@ -23,7 +23,9 @@ set_terminal = function(rdoc = TRUE, colorout = TRUE, prettycode = TRUE) {
     rdoc::use_rdoc()
   }
 
-  if (isTRUE(colorout)) base::library("colorout")
+  if (isTRUE(colorout) && requireNamespace("colorout", quietly = TRUE)) {
+      base::library("colorout")
+  }
 }
 
 #' @rdname is_terminal

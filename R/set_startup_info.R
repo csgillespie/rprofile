@@ -48,7 +48,7 @@ get_r_sessions = function() {
 #'
 #' Currently prints the numbe of Rsessions running and wifi details.
 #' @export
-startup_info = function() {
+set_startup_info = function() {
   cat("\014")
   wifi_name = get_wifi() #nolint
   no_sessions = get_r_sessions() #nolint

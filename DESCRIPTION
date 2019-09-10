@@ -14,7 +14,6 @@ Description: My helper functions and set-up used in my
 License: GPL-2 | GPL-3
 Imports: 
     clisymbols,
-    colorout,
     crayon,
     gert,
     glue,
@@ -29,6 +28,7 @@ Imports:
     rstudioapi,
     stringr
 Suggests:
+    colorout,
     lintr,
     testthat
 Encoding: UTF-8
