@@ -27,24 +27,15 @@ remotes::install_github("csgillespie/rprofile")
 The package also uses two non-cran packages
 
 ``` r
-gaborcsardi/prompt,
-jalvesaq/colorout
+# Used for nice prompts
+remotes::install_github("gaborcsardi/prompt")
+
+# Used for nice colours in the terminal
+# Not for Windows
+remotes::install_github("jalvesaq/colorout")
 ```
 
-## Setting better options
-
-The `set_startup_options()` function sets better (in my opinion) set of
-start-up options. These include
-
-  - Setting `Ncpus` to run parallel installs by default
-  - Removing significant stars
-  - Reduce the default print length
-  - Plus a few others
-
-I’ve also created a convenience function for adding additional R
-repositories - `set_repos()`. Probably not needed by most people.
-
-## R prompt
+## R Pprompt
 
 The R prompt has also been customised (using the **prompt** package):
 
@@ -55,7 +46,9 @@ A distinction needs to be made between the RStudio Console and the
 terminal. The console already has lots of nice features, e.g. syntax
 highlighting. So I have two separated functions.
 
-## Useful start-up messages
+![](man/figures/prompt.png)
+
+### Useful Start-up Messages
 
 Currently two start-up messages are displayed:
 
@@ -64,7 +57,9 @@ Currently two start-up messages are displayed:
 
 This currently only works under Linux.
 
-## Helper functions
+![](man/figures/startup-message.png)
+
+### Helper Functions
 
 It’s always dangerous to load functions in your start-up script, so I’ve
 only included functions I’m fairly sure won’t be used in a script.
@@ -76,18 +71,35 @@ only included functions I’m fairly sure won’t be used in a script.
 
   - `lsos()` - a handy function for listing large objects
 
-  - `op(path = ".")` - Creates & opens an RStudio project in the the
-    directory specified
-
-  - `cp()` - Lists previous RStudio projects and gives an option to
-    open.
-
   - `library()` - Over writes the `library()` function with a smarter
     version. If a package is missing, automatically provides the option
     to install from CRAN or GitHub
 
   - `last_error()` and `last_trace()` - pre-loads from **rlang**. Nicer
     error investigation
+
+### RStudio functions
+
+  - `op(path = ".")` - Creates & opens an RStudio project in the the
+    directory specified
+
+  - `cp()` - Lists previous RStudio projects and gives an option to
+    open.
+
+![](man/figures/cp.png)
+
+### Setting Better `options()`
+
+The `set_startup_options()` function sets better (in my opinion) set of
+start-up options. These include
+
+  - Setting `Ncpus` to run parallel installs by default
+  - Removing significant stars
+  - Reduce the default print length
+  - Plus a few others
+
+I’ve also created a convenience function for adding additional R
+repositories - `set_repos()`. Probably not needed by most people.
 
 ## Example `.Rprofile`
 
@@ -120,7 +132,7 @@ however you want. Here’s an example
   - The `lsos()` function was taken from the
     [SO](https://stackoverflow.com/q/1358003/203420) question.
 
-  - The improved version of  was adapted from the
+  - The improved version of `library()` was adapted from the
     [autoinst](https://github.com/jimhester/autoinst/). I did think
     about importing the package, but I had made too many personal
     tweaks.
