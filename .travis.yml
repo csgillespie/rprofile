@@ -1,7 +1,8 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: R
 cache: packages
+
+apt_packages:
+  - libgit2-dev
 
 r:
 #  - oldrel
