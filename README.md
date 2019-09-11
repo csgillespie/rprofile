@@ -35,7 +35,7 @@ remotes::install_github("gaborcsardi/prompt")
 remotes::install_github("jalvesaq/colorout")
 ```
 
-## R Pprompt
+## R Prompt
 
 The R prompt has also been customised (using the **prompt** package):
 
