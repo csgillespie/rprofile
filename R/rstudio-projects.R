@@ -69,7 +69,7 @@ cp = function(path = NULL) {
   path_start = pmax(path_start, 0)
 
   shorten_path = vector("character", length(path_split))
-  for(i in seq_along(shorten_path)) {
+  for(i in seq_along(shorten_path)) { #nolint
     p = path_split[[i]]
     p = p[path_start[i]:path_lens[i]]
     shorten_path[i] = paste(p, collapse =  .Platform$file.sep)

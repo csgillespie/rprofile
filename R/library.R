@@ -1,5 +1,5 @@
 ## This function is taken from
-## https://github.com/jimhester/autoinst/
+## https://github.com/jimhester/autoinst/ #nolintr
 ## The reason for not using the package, is that I had to
 ## tweak autoinst
 ## It has now been adapted
