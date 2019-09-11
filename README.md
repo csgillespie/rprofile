@@ -123,7 +123,8 @@ however you want. Here’s an example
     
       .env = rprofile::get_functions()
       attach(.env)
-      # Display wifi and no of R sessiones
+      # Display wifi and no of R sessions
+      # Linux only
       rprofile::startup_info()
     }
 
@@ -143,3 +144,9 @@ however you want. Here’s an example
   - I’ve probably “borrowed” some of the other ideas from blogposts and
     SO questions. If I’ve missed crediting you, please let me know and
     I’ll rectify it.
+
+## Other information
+
+  - If you have any suggestions or find bugs, please use the github
+    [issue tracker](https://github.com/csgillespie/rprofile/issues)
+  - Feel free to submit pull requests
