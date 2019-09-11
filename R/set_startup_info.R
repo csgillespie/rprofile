@@ -3,14 +3,13 @@
 
 
 get_wifi = function() {
-#  start_locs = c(1, 9, 25, 32, 38, 50, 58, 64)
   wifi = system2("nmcli", args = c("dev", "wifi"), stdout = TRUE)
   if (length(wifi) == 0L) return("-")
   start_locs = stringr::str_locate(wifi[1],
                                    c("IN-USE", "SSID", "MODE",
                                      "CHAN", "RATE", "SIGNAL",
                                      "BARS", "SECURITY"))
-  start_locs = start_locs[,1]
+  start_locs = start_locs[, 1]
   wifi = wifi[grep("^\\*", wifi)][[1]]
   wifi = strsplit(wifi, "")[[1]]
 

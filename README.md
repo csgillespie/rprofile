@@ -5,21 +5,16 @@
 
 <!-- badges: start -->
 
+[![Build
+Status](https://api.travis-ci.org/csgillespie/rprofile.png?branch=master)](https://travis-ci.org/csgillespie/rprofile)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rprofile)](https://CRAN.R-project.org/package=rprofile)
 <!-- badges: end -->
 
 A package (of my) Rprofile customisations. The goal is it broaden the
-package to be of use to other
-people.
+package to be of use to other people.
 
 ## Installation
-
-<!-- You can install the released version of rprofile from [CRAN](https://CRAN.R-project.org) with: -->
-
-<!-- ``` r -->
-
-<!-- install.packages("rprofile") -->
-
-<!-- ``` -->
 
 You can install the development version from
 [GitHub](https://github.com/) with:
@@ -27,6 +22,13 @@ You can install the development version from
 ``` r
 # install.packages("remotes")
 remotes::install_github("csgillespie/rprofile")
+```
+
+The package also uses two non-cran packages
+
+``` r
+gaborcsardi/prompt,
+jalvesaq/colorout
 ```
 
 ## Setting better options
