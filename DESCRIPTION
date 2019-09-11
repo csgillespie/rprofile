@@ -21,7 +21,6 @@ Imports:
     memuse,
     prettycode,
     prompt,
-    purrr,
     rdoc,
     remotes,
     rlang,

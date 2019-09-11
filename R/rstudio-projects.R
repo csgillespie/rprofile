@@ -33,7 +33,7 @@ op = function(path = ".") {
   }
 }
 
-#' @title Choose RStudio project
+#' @title Choose an RStudio Project
 #'
 #' Command line version for choosing RStudio projects
 #' @param path Default \code{NULL}. If not \code{NULL}, path is passed to \code{op}.
@@ -68,9 +68,12 @@ cp = function(path = NULL) {
   path_start = path_lens - 2
   path_start = pmax(path_start, 0)
 
-  shorten_path = purrr::imap_chr(path_split,
-                                 ~ paste(.x[path_start[.y]:path_lens[.y]],
-                                         collapse = .Platform$file.sep))
+  shorten_path = vector("character", length(path_split))
+  for(i in seq_along(shorten_path)) {
+    p = path_split[[i]]
+    p = p[path_start[i]:path_lens[i]]
+    shorten_path[i] = paste(p, collapse =  .Platform$file.sep)
+  }
 
   all = paste0(projs, " (", crayon::italic(shorten_path), ")\n")
   cat(all)
