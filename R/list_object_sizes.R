@@ -17,13 +17,13 @@ ls.objects = function(pos = 1, order.by,
   obj.dim = t(napply(names, function(x)
     as.numeric(dim(x))[1:2]))
 
-  if(length(names) > 0) {
+  if (length(names) > 0) {
     vec = is.na(obj.dim)[, 1] & (obj.type != "function")
     obj.dim[vec, 1] = napply(names, length)[vec]
     out = data.frame(obj.type, obj.size, obj.prettysize, obj.dim)
-  } else { # Handy empty environment
+  } else {
     out = data.frame("a", "b", "c", "d", "e")
-    out = out[FALSE,]
+    out = out[FALSE, ]
   }
   names(out) = c("Type", "Size", "PrettySize", "Rows", "Columns")
   if (!missing(order.by))
