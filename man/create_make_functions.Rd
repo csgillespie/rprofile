@@ -6,7 +6,10 @@
 
 Parses Makefile and automatically creates make_* functions}
 \usage{
-create_make_functions()
+create_make_functions(path = ".")
+}
+\arguments{
+\item{path}{Location of Makefile}
 }
 \description{
 Generate make functions

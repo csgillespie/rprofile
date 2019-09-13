@@ -8,9 +8,9 @@ get_list_str = function()  {
 # nolint end
 
 # Copy current Makefile to tmp and append list line
-create_tmp_makefile = function() {
+create_tmp_makefile = function(makefile_loc) {
   tmp_file = tempfile()
-  tmp_make = readLines("Makefile", warn = FALSE)
+  tmp_make = readLines(makefile_loc, warn = FALSE)
   tmp_make = c(tmp_make, get_list_str())
   f = file(tmp_file, "w")
   on.exit(close(f))
@@ -25,11 +25,14 @@ make_fun_factory = function(target) {
 #' @title Generate make functions
 #'
 #' Parses Makefile and automatically creates make_* functions
+#' @param path Location of Makefile
 #' @export
-create_make_functions = function() {
-  if (!file.exists("Makefile")) return(invisible(NULL))
+create_make_functions = function(path = ".") {
 
-  tmp_make = create_tmp_makefile()
+  makefile_loc = file.path(path, "Makefile")
+  if (!file.exists(makefile_loc)) return(invisible(NULL))
+
+  tmp_make = create_tmp_makefile(makefile_loc)
   make_list = system2("make", args = c("-f", tmp_make, "rprofile-list"), stdout = TRUE)
 
   # Add basic make to list
@@ -40,5 +43,6 @@ create_make_functions = function() {
   # Create functions
   l = lapply(make_list, make_fun_factory)
   names(l) = make_names
+  message(make_names)
   list2env(l, .rprofile)
 }
