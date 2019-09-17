@@ -43,6 +43,5 @@ create_make_functions = function(path = ".") {
   # Create functions
   l = lapply(make_list, make_fun_factory)
   names(l) = make_names
-  message(make_names)
   list2env(l, .rprofile)
 }
