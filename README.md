@@ -9,6 +9,8 @@
 Status](https://api.travis-ci.org/csgillespie/rprofile.png?branch=master)](https://travis-ci.org/csgillespie/rprofile)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rprofile)](https://CRAN.R-project.org/package=rprofile)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 A package (of my) Rprofile customisations. The goal is it broaden the
@@ -86,6 +88,8 @@ only included functions I’m fairly sure won’t be used in a script.
   - `cp()` - Lists previous RStudio projects and gives an option to
     open.
 
+  - `inf_mr()` - Shortcut to `xaringan::inf_mr()`.
+
 ![](man/figures/cp.png)
 
 ### Setting Better `options()`
@@ -121,11 +125,11 @@ however you want. Here’s an example
         rprofile::set_rstudio()
       }
     
-      .env = rprofile::get_functions()
+      .env = rprofile::set_functions()
       attach(.env)
       # Display wifi and no of R sessions
       # Linux only
-      rprofile::startup_info()
+      rprofile::set_startup_info()
     }
 
 ## Notes
