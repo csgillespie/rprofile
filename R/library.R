@@ -67,7 +67,7 @@ autoinst = function(package, ...) {
   if (class(has_loaded) != "try-error") {
     return(invisible(NULL))
   }
-  #  pkg = as.character(substitute(package))
+  #  pkg = as.character(substitute(package)) # nolint
   message(pkg, " not found. Trying to install")
   pkgs = available_packages()
   if (!is.na(pkgs[, "Package"][pkg])) {

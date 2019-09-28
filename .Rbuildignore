@@ -3,3 +3,4 @@
 ^\.lintr$
 ^\.travis\.yml$
 ^README\.Rmd$
+^\.Rprofile$
