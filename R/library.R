@@ -56,12 +56,18 @@ multicol = function(x) {
 # TODO: use lighter version of install_github
 #' @importFrom remotes install_github
 autoinst = function(package, ...) {
-  has_loaded = try(base::library(as.character(substitute(package)), character.only = TRUE),
+
+
+  pkg = try(as.character(package), silent = TRUE)
+  if (class(pkg) == "try-error") {
+    pkg = as.character(substitute(package))
+  }
+  has_loaded = try(base::library(pkg, character.only = TRUE),
                    silent = TRUE)
   if (class(has_loaded) != "try-error") {
     return(invisible(NULL))
   }
-  pkg = as.character(substitute(package))
+  #  pkg = as.character(substitute(package))
   message(pkg, " not found. Trying to install")
   pkgs = available_packages()
   if (!is.na(pkgs[, "Package"][pkg])) {
@@ -70,7 +76,6 @@ autoinst = function(package, ...) {
     base::library(as.character(substitute(package)), character.only = TRUE)
     return(invisible(NULL))
   }
-
   if (is.null(tryCatch(utils::packageVersion("remotes"), error = function(e) NULL))) {
     return(invisible(NULL))
   }

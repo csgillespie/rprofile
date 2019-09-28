@@ -6,7 +6,7 @@
 \usage{
 set_functions(load_last_error = TRUE, load_last_trace = TRUE,
   load_lsos = TRUE, load_cp = TRUE, load_op = TRUE,
-  load_library = TRUE)
+  load_library = TRUE, load_inf_mr = TRUE)
 }
 \arguments{
 \item{load_last_error}{Default TRUE}
@@ -20,6 +20,8 @@ set_functions(load_last_error = TRUE, load_last_trace = TRUE,
 \item{load_op}{Default TRUE}
 
 \item{load_library}{Default TRUE}
+
+\item{load_inf_mr}{Default TRUE. Create shortcut to \code{xaringan::inf_mr}.}
 }
 \description{
 Returns the hidden environment that contains the hidden functions.

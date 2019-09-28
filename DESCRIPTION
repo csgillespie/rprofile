@@ -29,7 +29,8 @@ Imports:
 Suggests:
     colorout,
     lintr,
-    testthat
+    testthat,
+    xaringan
 Remotes: 
     gaborcsardi/prompt,
     jalvesaq/colorout
