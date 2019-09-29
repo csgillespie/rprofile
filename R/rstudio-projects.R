@@ -79,9 +79,10 @@ cp = function(path = NULL) {
   cat(all)
 
   proj_number = readline("Select Project: ")
+  if (nchar(proj_number) == 0) return(invisible(NULL))
   proj_number = as.numeric(proj_number)
 
-
-  if (is.na(proj_number) || proj_number == 0) op()
+  if (is.na(proj_number)) return(invisible(NULL))
+  else if (proj_number == 0) op()
   else op(projs_paths[proj_number + 1])
 }
