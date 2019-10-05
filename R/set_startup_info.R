@@ -1,10 +1,9 @@
 #ip link
 #cat /sys/class/net/<interface>/speed
 
-
 get_wifi = function() {
   wifi = system2("nmcli", args = c("dev", "wifi"), stdout = TRUE)
-  if (length(wifi) == 0L) return("-")
+  if (length(wifi) <= 1L) return("-")
   start_locs = stringr::str_locate(wifi[1],
                                    c("IN-USE", "SSID", "MODE",
                                      "CHAN", "RATE", "SIGNAL",

@@ -4,6 +4,13 @@ cache: packages
 apt_packages:
   - libgit2-dev
 
+r_packages:
+  - lintr
+
+after_script:
+  - Rscript -e 'lintr::lint_package()'
+  - Rscript -e 'if(length(lintr::lint_package()) > 0) stop("Fix lint")'
+
 r:
 #  - oldrel
   - release
