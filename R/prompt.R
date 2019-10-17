@@ -1,4 +1,4 @@
-#' @import memuse
+#' @importFrom memuse Sys.procmem mu.size mu.unit
 display_memuse = function() {
   current = memuse::Sys.procmem()[[1]]
   if (memuse::mu.size(current, FALSE) < 1e9) return("")
@@ -12,9 +12,9 @@ grey = function() {
   crayon::make_style("grey70")
 }
 
-#' @import crayon
-#' @import prompt
-#' @import clisymbols
+#' @importFrom crayon green red blue yellow italic bold make_style
+#' @importFrom prompt git_branch git_dirty git_arrows
+#' @importFrom clisymbols symbol
 #' @importFrom gert git_status
 rstudio_prompt = function(expr, value, ok, visible) {
   status = if (ok) crayon::green(clisymbols::symbol$tick)
