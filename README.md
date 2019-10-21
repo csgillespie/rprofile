@@ -52,12 +52,11 @@ highlighting. So I have two separated functions.
 
 ### Useful Start-up Messages
 
-Currently two start-up messages are displayed:
+Currently three start-up messages are displayed:
 
-  - The wifi network you are connected too with speed info
-  - The number of open R sessions
-
-This currently only works under Linux.
+  - The wifi network you are connected too with speed info (Linux only)
+  - The number of open R sessions (Linux only)
+  - RStudio Project info
 
 ![](man/figures/startup-message.png)
 
@@ -131,6 +130,14 @@ however you want. Here’s an example
       # Linux only
       rprofile::set_startup_info()
     }
+    
+    # Prints RStudio project on start-up
+    setHook("rstudio.sessionInit", function(newSession) {
+      if (newSession && requireNamespace("rprofile", quietly = TRUE) {
+        active_rproj = rprofile::get_active_rproj()
+        message(glue::glue("{crayon::yellow('R-project:')} {active_rproj}"))
+      }
+    }, action = "append")
 
 ## Notes
 

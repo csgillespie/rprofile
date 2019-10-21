@@ -33,6 +33,22 @@ op = function(path = ".") {
   }
 }
 
+get_shorten_paths = function(paths) {
+  path_split = stringr::str_split(paths, pattern = "/")
+  path_lens = unlist(lapply(path_split, length))
+  path_start = path_lens - 2
+  path_start = pmax(path_start, 0)
+
+  shorten_path = vector("character", length(path_split))
+  for (i in seq_along(shorten_path)) { #nolint
+    p = path_split[[i]]
+    p = p[path_start[i]:path_lens[i]]
+    shorten_path[i] = paste(p, collapse = .Platform$file.sep)
+  }
+  return(shorten_path)
+}
+
+
 #' @title Choose an RStudio Project
 #'
 #' Command line version for choosing RStudio projects
@@ -63,18 +79,7 @@ cp = function(path = NULL) {
   tilde = path.expand("~")
   projs_dir = stringr::str_replace(projs_dir, tilde, "~")
 
-  path_split = stringr::str_split(projs_dir, pattern = "/")
-  path_lens = unlist(lapply(path_split, length))
-  path_start = path_lens - 2
-  path_start = pmax(path_start, 0)
-
-  shorten_path = vector("character", length(path_split))
-  for(i in seq_along(shorten_path)) { #nolint
-    p = path_split[[i]]
-    p = p[path_start[i]:path_lens[i]]
-    shorten_path[i] = paste(p, collapse =  .Platform$file.sep)
-  }
-
+  shorten_paths = get_shorten_paths(paths = projs_dir)
   all = paste0(projs, " (", crayon::italic(shorten_path), ")\n")
   cat(all)
 

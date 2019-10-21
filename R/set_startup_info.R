@@ -41,8 +41,12 @@ get_r_sessions = function() {
   no_sessions + length(r_sessions) - 2
 }
 
+#' @rdname set_startup_info
+#' @export
 get_active_rproj = function() {
-  if (isFALSE(rstudioapi::isAvailable())) return(glue::glue("{red(symbol$cross)} ({getwd()})"))
+  wd = get_shorten_paths(getwd())
+
+  if (isFALSE(rstudioapi::isAvailable())) return(glue::glue("{red(symbol$cross)} ({wd})"))
 
   active_proj = rstudioapi::getActiveProject()
   rproj = list.files(pattern = "\\.Rproj$")
@@ -52,25 +56,27 @@ get_active_rproj = function() {
   }
 
   if (is.null(active_proj)) {
-    msg = glue::glue_col("{blue} {symbol$info} {rproj} available ({getwd()})")
+    msg = glue::glue_col("{blue} {symbol$info} {rproj} available ({wd})")
   } else {
     active_proj = basename(active_proj)
-    msg = glue::glue_col("{green} {symbol$tick} {active_proj} active ({getwd()})")
+    msg = glue::glue_col("{green} {symbol$tick} {active_proj} active ({wd})")
   }
   return(msg)
 }
 
+
 #' Customised Startup info
 #'
 #' Currently prints the numbe of Rsessions running and wifi details.
+#' The \code{get_active_rproj} function needs to be explicitly added to .Rprofile due
+#' to the way RStudio hooks work
 #' @export
 set_startup_info = function() {
   cat("\014")
   wifi_name = get_wifi() #nolint
   no_sessions = get_r_sessions() #nolint
-  active_rproj = get_active_rproj() #nolint
+
   msg = glue::glue("{crayon::yellow('wifi:')} {wifi_name}
-                    {crayon::yellow('#rsessions:')} {no_sessions}
-                    {crayon::yellow('R-project:')} {active_rproj}")
+                    {crayon::yellow('#rsessions:')} {no_sessions}")
   message(msg)
 }

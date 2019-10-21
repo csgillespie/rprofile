@@ -2,6 +2,7 @@
 
 export(cp)
 export(create_make_functions)
+export(get_active_rproj)
 export(is_terminal)
 export(op)
 export(set_functions)
