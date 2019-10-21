@@ -80,7 +80,7 @@ cp = function(path = NULL) {
   projs_dir = stringr::str_replace(projs_dir, tilde, "~")
 
   shorten_paths = get_shorten_paths(paths = projs_dir)
-  all = paste0(projs, " (", crayon::italic(shorten_path), ")\n")
+  all = paste0(projs, " (", crayon::italic(shorten_paths), ")\n")
   cat(all)
 
   proj_number = readline("Select Project: ")
