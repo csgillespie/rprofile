@@ -2,6 +2,7 @@
 
   * Tweak: In `cp()` pressing enter now exits the function
   * Bug: No wifi signals no longer returns an error
+  * Add details on current RStudio project
 
 # rprofile 0.1.0
 

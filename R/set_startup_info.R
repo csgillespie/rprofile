@@ -3,7 +3,7 @@
 
 get_wifi = function() {
   wifi = system2("nmcli", args = c("dev", "wifi"), stdout = TRUE)
-  if (length(wifi) <= 1L) return("-")
+  if (length(wifi) <= 1L) return(crayon::red(symbol$cross))
   start_locs = stringr::str_locate(wifi[1],
                                    c("IN-USE", "SSID", "MODE",
                                      "CHAN", "RATE", "SIGNAL",
@@ -41,6 +41,24 @@ get_r_sessions = function() {
   no_sessions + length(r_sessions) - 2
 }
 
+get_active_rproj = function() {
+  if (isFALSE(rstudioapi::isAvailable())) return(glue::glue("{red(symbol$cross)} ({getwd()})"))
+
+  active_proj = rstudioapi::getActiveProject()
+  rproj = list.files(pattern = "\\.Rproj$")
+
+  if (length(rproj) == 0L && is.null(active_proj)) {
+    return(NULL)
+  }
+
+  if (is.null(active_proj)) {
+    msg = glue::glue_col("{blue} {symbol$info} {rproj} available ({getwd()})")
+  } else {
+    active_proj = basename(active_proj)
+    msg = glue::glue_col("{green} {symbol$tick} {active_proj} active ({getwd()})")
+  }
+  return(msg)
+}
 
 #' Customised Startup info
 #'
@@ -50,7 +68,9 @@ set_startup_info = function() {
   cat("\014")
   wifi_name = get_wifi() #nolint
   no_sessions = get_r_sessions() #nolint
+  active_rproj = get_active_rproj() #nolint
   msg = glue::glue("{crayon::yellow('wifi:')} {wifi_name}
-                    {crayon::yellow('#rsessions:')} {no_sessions}")
+                    {crayon::yellow('#rsessions:')} {no_sessions}
+                    {crayon::yellow('R-project:')} {active_rproj}")
   message(msg)
 }
