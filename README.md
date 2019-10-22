@@ -133,8 +133,8 @@ however you want. Here’s an example
     
     # Prints RStudio project on start-up
     setHook("rstudio.sessionInit", function(newSession) {
-      if (newSession && requireNamespace("rprofile", quietly = TRUE) {
-        active_rproj = rprofile::get_active_rproj()
+      active_rproj = rprofile::get_active_rproj()
+      if (!is.null(active_rproj)) {
         message(glue::glue("{crayon::yellow('R-project:')} {active_rproj}"))
       }
     }, action = "append")
