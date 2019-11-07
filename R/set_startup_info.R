@@ -52,7 +52,7 @@ get_active_rproj = function() {
   if (length(rproj) == 0L && is.null(active_proj)) return(NULL)
 
   if (is.null(active_proj)) {
-    msg = glue::glue_col("{blue} {symbol$info} {rproj} available ({wd})")
+    msg = glue::glue_col("{blue}{symbol$info} {rproj} available ({wd})")
   } else {
     active_proj = basename(active_proj)
     msg = glue::glue_col("{green}{active_proj} ({wd})")

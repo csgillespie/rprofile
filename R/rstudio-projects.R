@@ -16,7 +16,7 @@ ip = function(path = getwd()) {
 #' }
 #' @export
 op = function(path = ".") {
-  path = normalizePath(path)
+  if (file.exists(path)) path = normalizePath(path)
   proj = list.files(path, pattern = "\\.Rproj$")
   if (grepl("\\.Rproj$", path)) {
     setwd(dirname(path))
