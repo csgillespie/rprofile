@@ -9,6 +9,7 @@ get_wifi = function() {
                                      "CHAN", "RATE", "SIGNAL",
                                      "BARS", "SECURITY"))
   start_locs = start_locs[, 1]
+  if (length(grep("^\\*", wifi)) == 0L) return(crayon::red(symbol$cross))
   wifi = wifi[grep("^\\*", wifi)][[1]]
   wifi = strsplit(wifi, "")[[1]]
 

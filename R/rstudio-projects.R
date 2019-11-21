@@ -67,6 +67,7 @@ cp = function(path = NULL) {
   projs_paths = c(getwd(),
                   projs_paths[file.exists(projs_paths)][1:9])
   projs_paths = projs_paths[!is.na(projs_paths)]
+  projs_paths = normalizePath(projs_paths)
 
   ## Get project name
   projs = gsub(basename(projs_paths), pattern = ".Rproj", replacement = "")

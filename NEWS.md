@@ -4,6 +4,7 @@
   * Bug: No wifi signals no longer returns an error
   * Add details on current RStudio project
   * Removing warning when creating a new directory via `op()`
+  * Normalise paths in `cp()`
 
 # rprofile 0.1.0
 
