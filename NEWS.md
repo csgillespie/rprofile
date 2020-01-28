@@ -5,6 +5,8 @@
   * Add details on current RStudio project
   * Removing warning when creating a new directory via `op()`
   * Normalise paths in `cp()`
+  * Add `menu.graphics = FALSE` to `set_options()`
+  * Bug: width passed to options incorrectly
 
 # rprofile 0.1.0
 

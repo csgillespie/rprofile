@@ -7,11 +7,21 @@
 Sets nicer options. All arguments are passed to the \code{options} function.
 This function also sets \code{ipck = TRUE} in \code{rc.settings}.}
 \usage{
-set_startup_options(digits = 4, show.signif.stars = FALSE,
-  useFancyQuotes = FALSE, fix_width = 88, Ncpus = max(1L,
-  parallel::detectCores() - 1L), continue = " ", max.print = 100,
-  servr.daemon = TRUE, max = 10L, mc.cores = max(1L,
-  parallel::detectCores() - 1L), error = "rlang", ...)
+set_startup_options(
+  digits = 4,
+  show.signif.stars = FALSE,
+  useFancyQuotes = FALSE,
+  width = 88,
+  Ncpus = max(1L, parallel::detectCores() - 1L),
+  continue = " ",
+  max.print = 100,
+  servr.daemon = TRUE,
+  max = 10L,
+  mc.cores = max(1L, parallel::detectCores() - 1L),
+  error = "rlang",
+  menu.graphics = FALSE,
+  ...
+)
 }
 \arguments{
 \item{digits}{Default \code{4}}
@@ -20,7 +30,7 @@ set_startup_options(digits = 4, show.signif.stars = FALSE,
 
 \item{useFancyQuotes}{Default \code{FALSE}}
 
-\item{fix_width}{Default \code{88}}
+\item{width}{Default \code{100}}
 
 \item{Ncpus}{Default number of CPUs - 1. Used for parallel pkg installs.}
 
@@ -35,6 +45,8 @@ set_startup_options(digits = 4, show.signif.stars = FALSE,
 \item{mc.cores}{Default number of CPUs - 1. Used for parallel computing}
 
 \item{error}{Default \code{rlang}. If \code{rlang} is installed, then error = rlang::entrace.}
+
+\item{menu.graphics}{Default \code{FALSE}. Logical: should graphical menus be used if available?}
 
 \item{...}{Other arguments passed to \code{options}.}
 }

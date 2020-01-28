@@ -5,7 +5,7 @@
 #' @param digits Default \code{4}
 #' @param show.signif.stars Default \code{FALSE}
 #' @param useFancyQuotes Default \code{FALSE}
-#' @param fix_width Default \code{88}
+#' @param width Default \code{100}
 #' @param Ncpus Default number of CPUs - 1. Used for parallel pkg installs.
 #' @param continue Default blank space (remove the defaut +)
 #' @param max.print Default 100 to avoid blow up
@@ -13,12 +13,13 @@
 #' @param max Default \code{10}. For List printing
 #' @param mc.cores Default number of CPUs - 1. Used for parallel computing
 #' @param error Default \code{rlang}. If \code{rlang} is installed, then error = rlang::entrace.
+#' @param menu.graphics Default \code{FALSE}. Logical: should graphical menus be used if available?
 #' @param ... Other arguments passed to \code{options}.
 #' @export
 set_startup_options = function(digits = 4,
                                show.signif.stars = FALSE, #nolint
                                useFancyQuotes = FALSE, #nolint
-                               fix_width = 88,
+                               width = 88,
                                Ncpus = max(1L, parallel::detectCores() - 1L),
                                continue = " ",
                                max.print = 100, # Avoid blow up
@@ -26,12 +27,13 @@ set_startup_options = function(digits = 4,
                                max = 10L, # List printing
                                mc.cores = max(1L, parallel::detectCores() - 1L),
                                error = "rlang",
+                               menu.graphics = FALSE,
                                ...) {
 
   options(digits = digits,
           show.signif.stars = show.signif.stars, #nolint
           useFancyQuotes = useFancyQuotes, #nolint
-          fix_width = fix_width,
+          width = width,
           Ncpus = Ncpus,
           continue = continue,
           max.print = max.print, # Avoid blow up
