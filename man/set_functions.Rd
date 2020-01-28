@@ -4,9 +4,15 @@
 \alias{set_functions}
 \title{Retrieve the hidden environment}
 \usage{
-set_functions(load_last_error = TRUE, load_last_trace = TRUE,
-  load_lsos = TRUE, load_cp = TRUE, load_op = TRUE,
-  load_library = TRUE, load_inf_mr = TRUE)
+set_functions(
+  load_last_error = TRUE,
+  load_last_trace = TRUE,
+  load_lsos = TRUE,
+  load_cp = TRUE,
+  load_op = TRUE,
+  load_library = TRUE,
+  load_inf_mr = TRUE
+)
 }
 \arguments{
 \item{load_last_error}{Default TRUE}
