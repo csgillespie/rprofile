@@ -1,14 +1,14 @@
-# rprofile (development version)
-
-  * Tweak: In `cp()` pressing enter now exits the function
+# 0.1.1
   * Bug: No wifi signals no longer returns an error
-  * Add details on current RStudio project
-  * Removing warning when creating a new directory via `op()`
-  * Normalise paths in `cp()`
-  * Add `menu.graphics = FALSE` to `set_options()`
   * Bug: width passed to options incorrectly
-
-# rprofile 0.1.0
+  * Bug: export `lsos()` on startup (not `llsos()`)
+  * Tweak: In `cp()` pressing enter now exits the function
+  * Tweak: Removing warning when creating a new directory via `op()`
+  * Tweak: Normalise paths in `cp()`
+  * Add: details on current RStudio project
+  * Add: `menu.graphics = FALSE` to `set_options()`
+ 
+# 0.1.0
 
   * Added a `NEWS.md` file to track changes to the package.
   * First version

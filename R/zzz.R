@@ -20,7 +20,7 @@ set_functions = function(load_last_error = TRUE,
                          load_inf_mr = TRUE) {
   if (isTRUE(load_last_error)) .rprofile$last_error = rlang::last_error
   if (isTRUE(load_last_trace)) .rprofile$last_trace = rlang::last_trace
-  if (isTRUE(load_lsos)) .rprofile$llsos = lsos
+  if (isTRUE(load_lsos)) .rprofile$lsos = lsos
   if (isTRUE(load_op)) .rprofile$op = op
   if (isTRUE(load_cp)) .rprofile$cp = cp
   if (isTRUE(load_library)) .rprofile$library = autoinst
