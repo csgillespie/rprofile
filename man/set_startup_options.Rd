@@ -20,6 +20,10 @@ set_startup_options(
   mc.cores = max(1L, parallel::detectCores() - 1L),
   error = "rlang",
   menu.graphics = FALSE,
+  warnPartialMatchArgs = TRUE,
+  scipen = 999,
+  HTTPUserAgent = sprintf("R/\%s R (\%s)", getRversion(), paste(getRversion(),
+    R.version$platform, R.version$arch, R.version$os)),
   ...
 )
 }
@@ -34,7 +38,7 @@ set_startup_options(
 
 \item{Ncpus}{Default number of CPUs - 1. Used for parallel pkg installs.}
 
-\item{continue}{Default blank space (remove the defaut +)}
+\item{continue}{Default blank space (remove the default +)}
 
 \item{max.print}{Default 100 to avoid blow up}
 
@@ -47,6 +51,12 @@ set_startup_options(
 \item{error}{Default \code{rlang}. If \code{rlang} is installed, then error = rlang::entrace.}
 
 \item{menu.graphics}{Default \code{FALSE}. Logical: should graphical menus be used if available?}
+
+\item{warnPartialMatchArgs}{Default \code{TRUE}. Warn if using partial arguments.}
+
+\item{scipen}{Default \code{999}. Always print out full numbers, i.e. not 1e2}
+
+\item{HTTPUserAgent}{Used by RStudio Package Manager.}
 
 \item{...}{Other arguments passed to \code{options}.}
 }

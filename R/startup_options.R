@@ -7,13 +7,16 @@
 #' @param useFancyQuotes Default \code{FALSE}
 #' @param width Default \code{100}
 #' @param Ncpus Default number of CPUs - 1. Used for parallel pkg installs.
-#' @param continue Default blank space (remove the defaut +)
+#' @param continue Default blank space (remove the default +)
 #' @param max.print Default 100 to avoid blow up
 #' @param servr.daemon Default \code{TRUE}.  For xaringan presentations
 #' @param max Default \code{10}. For List printing
 #' @param mc.cores Default number of CPUs - 1. Used for parallel computing
 #' @param error Default \code{rlang}. If \code{rlang} is installed, then error = rlang::entrace.
 #' @param menu.graphics Default \code{FALSE}. Logical: should graphical menus be used if available?
+#' @param warnPartialMatchArgs Default \code{TRUE}. Warn if using partial arguments.
+#' @param scipen Default \code{999}. Always print out full numbers, i.e. not 1e2
+#' @param HTTPUserAgent Used by RStudio Package Manager.
 #' @param ... Other arguments passed to \code{options}.
 #' @export
 set_startup_options = function(digits = 4,
@@ -28,6 +31,13 @@ set_startup_options = function(digits = 4,
                                mc.cores = max(1L, parallel::detectCores() - 1L),
                                error = "rlang",
                                menu.graphics = FALSE,
+                               warnPartialMatchArgs = TRUE, # nolint
+                               scipen = 999,                # nolint
+                               HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(),
+                                                       paste(getRversion(),
+                                                             R.version$platform,
+                                                             R.version$arch,
+                                                             R.version$os)),
                                ...) {
 
   options(digits = digits,
@@ -40,6 +50,9 @@ set_startup_options = function(digits = 4,
           servr.daemon = servr.daemon, # For xaringan presentations,
           max = max, # List printing
           mc.cores = mc.cores,
+          warnPartialMatchArgs = warnPartialMatchArgs,
+          scipen = scipen,
+          HTTPUserAgent = HTTPUserAgent,
           ...)
   if (error == "rlang") {
     if (requireNamespace("rlang", quietly = TRUE)) options(error = rlang::entrace)

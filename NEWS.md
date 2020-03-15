@@ -1,3 +1,6 @@
+# 0.1.2
+  * Add: `warnPartialMatchArgs`, `scipen`, `HTTPUserAgent` to default options
+  
 # 0.1.1
   * Bug: No wifi signals no longer returns an error
   * Bug: width passed to options incorrectly
@@ -10,5 +13,5 @@
  
 # 0.1.0
 
-  * Added a `NEWS.md` file to track changes to the package.
+  * Added a `NEWS.md` file to track changes to the package
   * First version
