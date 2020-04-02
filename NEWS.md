@@ -1,5 +1,6 @@
 # 0.1.3
   * Add: `download.file.extra` to default options for RStudio package manager
+
 # 0.1.2
   * Add: `warnPartialMatchArgs`, `scipen`, `HTTPUserAgent` to default options
   
