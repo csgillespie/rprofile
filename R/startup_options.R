@@ -20,20 +20,20 @@
 #' @param download.file.extra Used by RSPM for curl/wget installs, e.g. Rscript.
 #' @param ... Other arguments passed to \code{options}.
 #' @export
-set_startup_options = function(digits = 4,
+set_startup_options = function(digits = 4L,
                                show.signif.stars = FALSE, #nolint
                                useFancyQuotes = FALSE, #nolint
-                               width = 88,
+                               width = 88L,
                                Ncpus = max(1L, parallel::detectCores() - 1L),
                                continue = " ",
-                               max.print = 100, # Avoid blow up
+                               max.print = 100L, # Avoid blow up
                                servr.daemon = TRUE, # For xaringan presentations,
                                max = 10L, # List printing
                                mc.cores = max(1L, parallel::detectCores() - 1L),
                                error = "rlang",
                                menu.graphics = FALSE,
                                warnPartialMatchArgs = TRUE, # nolint
-                               scipen = 999,                # nolint
+                               scipen = 999L,               # nolint
                                HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(),
                                                        paste(getRversion(),
                                                              R.version$platform,
