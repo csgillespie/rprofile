@@ -16,7 +16,8 @@
 #' @param menu.graphics Default \code{FALSE}. Logical: should graphical menus be used if available?
 #' @param warnPartialMatchArgs Default \code{TRUE}. Warn if using partial arguments.
 #' @param scipen Default \code{999}. Always print out full numbers, i.e. not 1e2
-#' @param HTTPUserAgent Used by RStudio Package Manager.
+#' @param HTTPUserAgent Used by RStudio Package Manager (RSPM).
+#' @param download.file.extra Used by RSPM for curl/wget installs, e.g. Rscript.
 #' @param ... Other arguments passed to \code{options}.
 #' @export
 set_startup_options = function(digits = 4,
@@ -38,6 +39,11 @@ set_startup_options = function(digits = 4,
                                                              R.version$platform,
                                                              R.version$arch,
                                                              R.version$os)),
+                               download.file.extra = sprintf("--header 'User-Agent: R (%s)'",
+                                                             paste(getRversion(),
+                                                                   R.version$platform,
+                                                                   R.version$arch,
+                                                                   R.version$os)),
                                ...) {
 
   options(digits = digits,
@@ -53,6 +59,7 @@ set_startup_options = function(digits = 4,
           warnPartialMatchArgs = warnPartialMatchArgs,
           scipen = scipen,
           HTTPUserAgent = HTTPUserAgent,
+          download.file.extra = download.file.extra,
           ...)
   if (error == "rlang") {
     if (requireNamespace("rlang", quietly = TRUE)) options(error = rlang::entrace)
