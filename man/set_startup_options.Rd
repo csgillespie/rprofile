@@ -8,22 +8,24 @@ Sets nicer options. All arguments are passed to the \code{options} function.
 This function also sets \code{ipck = TRUE} in \code{rc.settings}.}
 \usage{
 set_startup_options(
-  digits = 4,
+  digits = 4L,
   show.signif.stars = FALSE,
   useFancyQuotes = FALSE,
-  width = 88,
+  width = 88L,
   Ncpus = max(1L, parallel::detectCores() - 1L),
   continue = " ",
-  max.print = 100,
+  max.print = 100L,
   servr.daemon = TRUE,
   max = 10L,
   mc.cores = max(1L, parallel::detectCores() - 1L),
   error = "rlang",
   menu.graphics = FALSE,
   warnPartialMatchArgs = TRUE,
-  scipen = 999,
+  scipen = 999L,
   HTTPUserAgent = sprintf("R/\%s R (\%s)", getRversion(), paste(getRversion(),
     R.version$platform, R.version$arch, R.version$os)),
+  download.file.extra = sprintf("--header \\"User-Agent: R (\%s)\\"",
+    paste(getRversion(), R.version$platform, R.version$arch, R.version$os)),
   ...
 )
 }
@@ -56,7 +58,9 @@ set_startup_options(
 
 \item{scipen}{Default \code{999}. Always print out full numbers, i.e. not 1e2}
 
-\item{HTTPUserAgent}{Used by RStudio Package Manager.}
+\item{HTTPUserAgent}{Used by RStudio Package Manager (RSPM).}
+
+\item{download.file.extra}{Used by RSPM for curl/wget installs, e.g. Rscript.}
 
 \item{...}{Other arguments passed to \code{options}.}
 }

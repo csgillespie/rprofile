@@ -1,3 +1,6 @@
+# 0.1.4
+  * Tweak: Use double quotes for `download.file.extra`. A workaround to an RStudio bug
+
 # 0.1.3
   * Add: `download.file.extra` to default options for RStudio package manager
 
