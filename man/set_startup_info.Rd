@@ -10,7 +10,7 @@ get_active_rproj()
 set_startup_info()
 }
 \description{
-Currently prints the numbe of Rsessions running and wifi details.
+Currently prints the number of R sessions running and wifi details.
 The \code{get_active_rproj} function needs to be explicitly added to .Rprofile due
 to the way RStudio hooks work
 }
