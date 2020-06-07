@@ -14,11 +14,11 @@ grey = function() {
 
 #' @importFrom crayon green red blue yellow italic bold make_style
 #' @importFrom prompt git_branch git_dirty git_arrows
-#' @importFrom clisymbols symbol
+#' @importFrom cli symbol
 #' @importFrom gert git_status
 rstudio_prompt = function(expr, value, ok, visible) {
-  status = if (ok) crayon::green(clisymbols::symbol$tick)
-  else crayon::red(clisymbols::symbol$cross)
+  status = if (ok) crayon::green(cli::symbol$tick)
+  else crayon::red(cli::symbol$cross)
 
   mem = display_memuse()
   gstatus = try(gert::git_status(), silent = TRUE)
@@ -37,5 +37,5 @@ rstudio_prompt = function(expr, value, ok, visible) {
          grey()(mem),
          #       crayon::blue(pkg))
          grey()(git),
-         grey()(clisymbols::symbol$pointer), " ")
+         grey()(cli::symbol$pointer), " ")
 }
