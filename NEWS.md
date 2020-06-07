@@ -1,3 +1,7 @@
+# Dev
+  * Change: Moving to `cli` from `clisymbols`
+  * Change: Redo getting wifi name & strength.  Using `nmcli dev wifi` became very slow.
+  
 # 0.1.4
   * Tweak: Use double quotes for `download.file.extra`. A workaround to an RStudio bug
 
