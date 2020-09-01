@@ -18,11 +18,7 @@ before_install:
   - sudo apt-get install -y ghostscript
 
 script:
-  - Rscript -e "inteRgrate::check_pkg()"
-  - Rscript -e "inteRgrate::check_r_filenames()"
-  - Rscript -e "inteRgrate::check_tidy_description()"
-  - Rscript -e "inteRgrate::check_lintr()"
-  - Rscript -e "inteRgrate::check_namespace()"
+  - Rscript -e "inteRgrate::check_via_env(default = TRUE)"
 
 r:
 #  - oldrel

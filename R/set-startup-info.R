@@ -2,8 +2,16 @@
 #ip link
 #cat /sys/class/net/<interface>/speed # Ethernet speed
 
-#' @importFrom tibble tibble
-get_internet = function() {
+get_windows_internet = function() {
+
+  wifi_name = gsub("    SSID                   : ",
+                   "", system("Netsh WLAN show interfaces", intern = TRUE)[[9]])
+  wifi_signal = gsub("    Signal                 : ",
+                     "", system("Netsh WLAN show interfaces", intern = TRUE)[[19]])
+  glue::glue("{wifi_name} (", trimws("{wifi_signal}"), ")")
+}
+
+get_linux_internet = function() {
   cons = system2("nmcli", args = c("connection", "show"), stdout = TRUE)
 
   if (length(cons) <= 1L) return(crayon::red(symbol$cross))
@@ -51,13 +59,27 @@ get_internet = function() {
   }
   return(con_str)
 }
+#' @importFrom tibble tibble
+get_internet = function() {
+  if (Sys.info()[["sysname"]] == "Windows") {
+    con_str = get_windows_internet()
+  } else if (Sys.info()[["sysname"]] == "Linux") {
+    con_str = get_linux_internet()
+  } else {
+    con_str = "Unknown system"
+  }
+  return(con_str)
+}
 
 
 get_r_sessions = function() {
-  r_sessions = system2("ps", args = c("aux", "|", "grep", "rsession"), stdout = TRUE)
-  no_sessions = length(r_sessions) - 2
-  r_sessions = system2("ps", args = c("aux", "|", "grep", "exec/R"), stdout = TRUE)
-  no_sessions + length(r_sessions) - 2
+  if (Sys.info()[["sysname"]] == "Linux") {
+    r_sessions = system2("ps", args = c("aux", "|", "grep", "rsession"), stdout = TRUE)
+    no_sessions = length(r_sessions) - 2
+    r_sessions = system2("ps", args = c("aux", "|", "grep", "exec/R"), stdout = TRUE)
+    return(no_sessions + length(r_sessions) - 2)
+  }
+  return("Unknown system")
 }
 
 #' @rdname set_startup_info
