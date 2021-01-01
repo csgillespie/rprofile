@@ -49,6 +49,15 @@ get_shorten_paths = function(paths) {
 }
 
 
+get_rprojs = function() {
+  fname = "~/.local/share/rstudio/monitored/lists/project_mru" #nolint
+  if (file.exists(fname)) return(readLines(fname))
+  fname = "~/.rstudio-desktop/monitored/lists/project_mru" #nolint
+  if (file.exists(fname)) return(readLines(fname))
+  stop("Unable to find Rproject list")
+}
+
+
 #' @title Choose an RStudio Project
 #'
 #' Command line version for choosing RStudio projects
@@ -63,7 +72,7 @@ cp = function(path = NULL) {
     op(path)
     return(invisible(NULL))
   }
-  projs_paths = readLines("~/.rstudio-desktop/monitored/lists/project_mru") #nolint
+  projs_paths = get_rprojs()
   projs_paths = c(getwd(),
                   projs_paths[file.exists(projs_paths)][1:9])
   projs_paths = projs_paths[!is.na(projs_paths)]
