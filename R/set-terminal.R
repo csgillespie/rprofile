@@ -26,6 +26,7 @@ set_terminal = function(rdoc = TRUE, colorout = TRUE, prettycode = TRUE) {
   if (isTRUE(colorout) && requireNamespace("colorout", quietly = TRUE)) {
       base::library("colorout")
   }
+  prompt::set_prompt(rstudio_prompt)
 }
 
 #' @rdname is_terminal
