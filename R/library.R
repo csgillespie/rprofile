@@ -56,8 +56,6 @@ multicol = function(x) {
 # TODO: use lighter version of install_github
 #' @importFrom remotes install_github
 autoinst = function(package, ...) {
-
-
   pkg = try(as.character(package), silent = TRUE)
   if (class(pkg) == "try-error") {
     pkg = as.character(substitute(package))
@@ -68,12 +66,13 @@ autoinst = function(package, ...) {
     return(invisible(NULL))
   }
   #  pkg = as.character(substitute(package)) # nolint
-  message(pkg, " not found. Trying to install")
+  cli::cli_alert_info("{pkg} not installed. Trying to install now")
   pkgs = available_packages()
   if (!is.na(pkgs[, "Package"][pkg])) {
-    message("Installing ", pkg)
+    cli::cli_alert_info("Installing {pkg}")
     utils::install.packages(pkg, quiet = TRUE)
     base::library(as.character(substitute(package)), character.only = TRUE)
+    cli::cli_alert_success("{pkg} installed and loaded")
     return(invisible(NULL))
   }
   if (is.null(tryCatch(utils::packageVersion("remotes"), error = function(e) NULL))) {
@@ -82,8 +81,8 @@ autoinst = function(package, ...) {
   gh_pkgs = gh_pkg(pkg)
   matches = which(pkg == gh_pkgs$pkg_name)
   if (length(matches) == 0) {
-    message("Package '", pkg, "' does not exist")
-    return()
+    cli::cli_alert_danger("Package {pkg} does not exist")
+    return(invisible(NULL))
   }
   i =
     if (length(matches) == 1) {
@@ -104,5 +103,6 @@ autoinst = function(package, ...) {
   }
   remotes::install_github(gh_pkgs$pkg_location[matches[as.integer(i)]])
   base::library(as.character(substitute(package)), character.only = TRUE)
-
+  cli::cli_alert_success("{pkg} installed and loaded")
+  return(invisible(NULL))
 }

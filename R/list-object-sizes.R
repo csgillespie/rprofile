@@ -1,5 +1,5 @@
 #' @importFrom utils capture.output object.size
-#SO: http://stackoverflow.com/q/1358003/203420
+# SO: http://stackoverflow.com/q/1358003/203420
 # improved list of objects
 ls.objects = function(pos = 1, order.by,
                       decreasing = FALSE, head = FALSE, n = 10) {

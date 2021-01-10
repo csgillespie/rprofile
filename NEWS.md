@@ -1,3 +1,7 @@
+# rprofile 0.1.7 _2020-09-17_
+  * Update: New R projs path (fixes #4)
+  * Tweak: Improved feedback from `library()` function
+  
 # rprofile 0.1.5 _2020-09-01_
   * Add: Detect Windows wifi (taken from @blakcjack's fork)
   * Change: Moving to `cli` from `clisymbols`
