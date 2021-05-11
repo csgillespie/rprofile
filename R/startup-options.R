@@ -5,7 +5,7 @@
 #' @param digits Default \code{4}
 #' @param show.signif.stars Default \code{FALSE}
 #' @param useFancyQuotes Default \code{FALSE}
-#' @param width Default \code{100}
+#' @param width Default cli::console_width() + 13L. See details.
 #' @param Ncpus Default number of CPUs - 1. Used for parallel pkg installs.
 #' @param continue Default blank space (remove the default +)
 #' @param max.print Default 100 to avoid blow up
@@ -19,11 +19,16 @@
 #' @param HTTPUserAgent Used by RStudio Package Manager (RSPM).
 #' @param download.file.extra Used by RSPM for curl/wget installs, e.g. Rscript.
 #' @param ... Other arguments passed to \code{options}.
+#' @details The \code{width} is only used in an R terminal (not RStudio). However,
+#' fancy prompts that involve colours (such as grey), mean that the column count is off
+#' as grey is \code{grey()(cli::symbol$pointer)} is translated to a 17 character
+#' Unicode string. My slightly hacky solution is to add a line break in the
+#' prompt, than add an additional 17 characters to the width to pad out the width.
 #' @export
 set_startup_options = function(digits = 4L,
                                show.signif.stars = FALSE, #nolint
                                useFancyQuotes = FALSE, #nolint
-                               width = 88L,
+                               width = cli::console_width() + 17L,
                                Ncpus = max(1L, parallel::detectCores() - 1L),
                                continue = " ",
                                max.print = 100L, # Avoid blow up

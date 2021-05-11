@@ -13,10 +13,13 @@ is_terminal = function() {
 #' @param rdoc Should we load the rdoc package
 #' @param colorout Should we load the colorout package
 #' @param prettycode Should we load the prettycode package
+#' @param cmd_prompt The prompt to use. A prompt from the {prompt} package
+#' could also be passed.
 #' @rdname is_terminal
 #' @export
-set_terminal = function(rdoc = TRUE, colorout = TRUE, prettycode = TRUE) {
-  prompt::set_prompt(prompt::prompt_fancy)
+set_terminal = function(rdoc = TRUE, colorout = TRUE,
+                        prettycode = TRUE,
+                        cmd_prompt = rprofile_prompt) {
   if (isTRUE(prettycode)) prettycode::prettycode()
   if (isTRUE(rdoc)) {
     base::library("utils") # Needed for rdoc`?` to take precedence
@@ -26,12 +29,12 @@ set_terminal = function(rdoc = TRUE, colorout = TRUE, prettycode = TRUE) {
   if (isTRUE(colorout) && requireNamespace("colorout", quietly = TRUE)) {
       base::library("colorout")
   }
-  prompt::set_prompt(rstudio_prompt)
+  prompt::set_prompt(rprofile_prompt)
 }
 
 #' @rdname is_terminal
 #' @export
 set_rstudio = function(prettycode = TRUE) {
   if (isTRUE(prettycode)) prettycode::prettycode()
-  prompt::set_prompt(rstudio_prompt)
+  prompt::set_prompt(rprofile_prompt)
 }

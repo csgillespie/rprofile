@@ -11,7 +11,7 @@ set_startup_options(
   digits = 4L,
   show.signif.stars = FALSE,
   useFancyQuotes = FALSE,
-  width = 88L,
+  width = cli::console_width() + 17L,
   Ncpus = max(1L, parallel::detectCores() - 1L),
   continue = " ",
   max.print = 100L,
@@ -36,7 +36,7 @@ set_startup_options(
 
 \item{useFancyQuotes}{Default \code{FALSE}}
 
-\item{width}{Default \code{100}}
+\item{width}{Default cli::console_width() + 13L. See details.}
 
 \item{Ncpus}{Default number of CPUs - 1. Used for parallel pkg installs.}
 
@@ -69,4 +69,11 @@ Set Nice Startup Options
 
 Sets nicer options. All arguments are passed to the \code{options} function.
 This function also sets \code{ipck = TRUE} in \code{rc.settings}.
+}
+\details{
+The \code{width} is only used in an R terminal (not RStudio). However,
+fancy prompts that involve colours (such as grey), mean that the column count is off
+as grey is \code{grey()(cli::symbol$pointer)} is translated to a 17 character
+Unicode string. My slightly hacky solution is to add a line break in the
+prompt, than add an additional 17 characters to the width to pad out the width.
 }

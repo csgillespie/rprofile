@@ -1,7 +1,7 @@
 Type: Package
 Package: rprofile
 Title: My Rprofile in a Handy R Package
-Version: 0.1.7
+Version: 0.1.8
 Authors@R: 
     person(given = "Colin",
            family = "Gillespie",

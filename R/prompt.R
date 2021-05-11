@@ -16,7 +16,7 @@ grey = function() {
 #' @importFrom prompt git_branch git_dirty git_arrows
 #' @importFrom cli symbol
 #' @importFrom gert git_status
-rstudio_prompt = function(expr, value, ok, visible) {
+rprofile_prompt = function(expr, value, ok, visible) {
   status = if (ok) crayon::green(cli::symbol$tick)
   else crayon::red(cli::symbol$cross)
 
@@ -37,5 +37,6 @@ rstudio_prompt = function(expr, value, ok, visible) {
          grey()(mem),
          #       crayon::blue(pkg))
          grey()(git),
+         ifelse(is_terminal(), "\n", ""), # See options details for info
          grey()(cli::symbol$pointer), " ")
 }
