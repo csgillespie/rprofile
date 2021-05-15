@@ -32,7 +32,7 @@ jobs:
 
       - name: Query dependencies
         run: |
-          install.packages('remotes', repo = "https://packagemanager.rstudio.com/cran/__linux__/focal/latest")
+          install.packages('remotes', repo = "https://cloud.r-project.org/")
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
