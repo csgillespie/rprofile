@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 # My opinionated .Rprofile
 
 <!-- badges: start -->
-[![Build Status](https://api.travis-ci.org/csgillespie/rprofile.png?branch=master)](https://travis-ci.org/csgillespie/rprofile)
 [![CRAN status](https://www.r-pkg.org/badges/version/rprofile)](https://CRAN.R-project.org/package=rprofile)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R-CMD-check](https://github.com/csgillespie/rprofile/workflows/R-CMD-check/badge.svg)](https://github.com/csgillespie/rprofile/actions)
 <!-- badges: end -->
 
 A package (of my) Rprofile customisations. The goal is it broaden the package

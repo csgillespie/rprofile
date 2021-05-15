@@ -8,7 +8,12 @@
 \usage{
 is_terminal()
 
-set_terminal(rdoc = TRUE, colorout = TRUE, prettycode = TRUE)
+set_terminal(
+  rdoc = TRUE,
+  colorout = TRUE,
+  prettycode = TRUE,
+  cmd_prompt = rprofile_prompt
+)
 
 set_rstudio(prettycode = TRUE)
 }
@@ -18,6 +23,9 @@ set_rstudio(prettycode = TRUE)
 \item{colorout}{Should we load the colorout package}
 
 \item{prettycode}{Should we load the prettycode package}
+
+\item{cmd_prompt}{The prompt to use. A prompt from the {prompt} package
+could also be passed.}
 }
 \description{
 Return \code{TRUE} is terminal. But \code{FALSE} if the RStudio console.

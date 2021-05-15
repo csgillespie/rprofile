@@ -1,3 +1,9 @@
+# rprofile 0.1.8 _2021-05-11_
+  * Calculate the optimal terminal width using `cli::console_width()`. 
+  * Add a line break when on an R Linux terminal. This (sort of) fixes the
+  issues with counting Unicode characters.
+  * Allow prompts to be passed in `set_terminal()`. Fixes #6
+
 # rprofile 0.1.7 _2020-09-17_
   * Update: New R projs path (fixes #4)
   * Tweak: Improved feedback from `library()` function
