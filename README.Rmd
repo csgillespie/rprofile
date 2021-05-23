@@ -61,7 +61,7 @@ separated functions.
 
 Currently three start-up messages are displayed:
 
- * The wifi network you are connected too with speed info
+ * The wifi network you are connected to with speed info
  * The number of open R sessions
  * RStudio Project info
  
