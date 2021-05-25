@@ -2,14 +2,59 @@
 #ip link
 #cat /sys/class/net/<interface>/speed # Ethernet speed
 
-get_windows_internet = function() {
+get_darwin_internet = function() {
 
-  wifi_name = gsub("    SSID                   : ",
-                   "", system("Netsh WLAN show interfaces", intern = TRUE)[[9]])
-  wifi_signal = gsub("    Signal                 : ",
-                     "", system("Netsh WLAN show interfaces", intern = TRUE)[[19]])
-  glue::glue("{wifi_name} (", trimws("{wifi_signal}"), ")")
+  # Connections
+  con = system("route get 10.10.10.10", intern = TRUE, ignore.stderr = TRUE)
+  con_interface = stringr::str_trim(stringr::str_remove(con[5], "interface:"))
+
+  if (is.na(con_interface)) {
+    con_type = "None"
+  } else {
+    con_type = system("networksetup -listallhardwareports | grep -C1 $(route get default | grep interface | awk '{print $2}')", intern = TRUE, ignore.stderr = TRUE)
+  }
+
+
+  # Wifi
+  if (stringr::str_detect(con_type[1], "Wi-Fi")) {
+
+    wifi_name = system("/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I  | awk -F' SSID: '  '/ SSID: / {print $2}'", intern = TRUE)
+
+    wifi_quality = system("/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I | awk -F: '/ agrCtlRSSI/{print $2}'", intern = TRUE)
+
+    lastTXRate = system("/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I  | awk -F' lastTxRate: '  '/ lastTxRate: / {print $2}'", intern = TRUE)
+
+    maxRate = system("/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I  | awk -F' maxRate: '  '/ maxRate: / {print $2}'", intern = TRUE)
+
+    signal = as.numeric(wifi_quality)
+
+    wifi_signal = signif((signal + 110) * 10 / 7, 0)
+
+    wifi_strength = if (signal > 70) {
+      green(wifi_signal)
+    } else if (wifi_signal > 60) {
+      green(wifi_signal)
+    } else if (wifi_signal > 50) {
+      yellow(wifi_signal)
+    } else {
+      red(wifi_signal)
+    }
+
+    wifi_string = glue::glue_col("{green {cli::symbol$tick}} {wifi_name} (Strength: {wifi_strength}, lastTXRate: {lastTXRate}, maxRate: {maxRate})")
+
+  } else {
+    wifi_string = glue::glue_col("{red {cli::symbol$cross}} wifi")
+  }
+
+  # Ethernet
+  if (stringr::str_detect(con_type[1], "Ethernet")) {
+    con_str = glue::glue_col("{wifi_string} | {green {cli::symbol$tick}} ethernet")
+  } else {
+    con_str = glue::glue_col("{wifi_string} | {red {cli::symbol$cross}} ethernet")
+  }
+  return(con_str)
 }
+
 
 get_linux_internet = function() {
   cons = system2("nmcli", args = c("connection", "show"), stdout = TRUE)
@@ -59,21 +104,32 @@ get_linux_internet = function() {
   }
   return(con_str)
 }
+
+get_windows_internet = function() {
+
+  wifi_name = gsub("    SSID                   : ",
+                   "", system("Netsh WLAN show interfaces", intern = TRUE)[[9]])
+  wifi_signal = gsub("    Signal                 : ",
+                     "", system("Netsh WLAN show interfaces", intern = TRUE)[[19]])
+  glue::glue("{wifi_name} (", trimws("{wifi_signal}"), ")")
+}
+
 #' @importFrom tibble tibble
 get_internet = function() {
   if (Sys.info()[["sysname"]] == "Windows") {
     con_str = get_windows_internet()
   } else if (Sys.info()[["sysname"]] == "Linux") {
     con_str = get_linux_internet()
+  } else if (Sys.info()[["sysname"]] == "Darwin") {
+    con_str = get_darwin_internet()
   } else {
     con_str = "Unknown system"
   }
   return(con_str)
 }
 
-
 get_r_sessions = function() {
-  if (Sys.info()[["sysname"]] == "Linux") {
+  if (Sys.info()[["sysname"]] %in% c("Linux", "Darwin")) {
     r_sessions = system2("ps", args = c("aux", "|", "grep", "rsession"), stdout = TRUE)
     no_sessions = length(r_sessions) - 2
     r_sessions = system2("ps", args = c("aux", "|", "grep", "exec/R"), stdout = TRUE)

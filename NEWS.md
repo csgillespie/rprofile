@@ -1,3 +1,6 @@
+# rprofile 0.1.8 _2021-05-24_
+  * Add: MacOS startup messages (taken from @emraher's fork)
+  
 # rprofile 0.1.8 _2021-05-11_
   * Calculate the optimal terminal width using `cli::console_width()`. 
   * Add a line break when on an R Linux terminal. This (sort of) fixes the
