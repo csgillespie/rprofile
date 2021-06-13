@@ -20,7 +20,7 @@ is_terminal = function() {
 set_terminal = function(rdoc = TRUE, colorout = TRUE,
                         prettycode = TRUE,
                         cmd_prompt = rprofile_prompt) {
-  if (isTRUE(prettycode)) prettycode::prettycode()
+  if (isTRUE(prettycode)) suppressMessages(prettycode::prettycode())
   if (isTRUE(rdoc)) {
     base::library("utils") # Needed for rdoc`?` to take precedence
     rdoc::use_rdoc()
