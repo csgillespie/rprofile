@@ -1,4 +1,7 @@
-# rprofile 0.1.8 _2021-05-24_
+# rprofile 0.1.10 _2021-06-13_
+  * Use `suppressMessages()` to silence `prettycode::prettycode()` - fixes #10
+
+# rprofile 0.1.9 _2021-05-24_
   * Add: MacOS startup messages (taken from @emraher's fork)
   
 # rprofile 0.1.8 _2021-05-11_
