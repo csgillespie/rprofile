@@ -1,3 +1,6 @@
+# rprofile 0.1.10 _2021-11-16_
+  * Set `setWidthOnResize=TRUE` in options
+
 # rprofile 0.1.10 _2021-06-13_
   * Use `suppressMessages()` to silence `prettycode::prettycode()` - fixes #10
 
