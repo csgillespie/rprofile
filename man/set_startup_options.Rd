@@ -11,7 +11,9 @@ set_startup_options(
   digits = 4L,
   show.signif.stars = FALSE,
   useFancyQuotes = FALSE,
-  width = cli::console_width() + 17L,
+  setWidthOnResize = TRUE,
+  check.bounds = TRUE,
+  width = (cli::console_width() + 17L),
   Ncpus = max(1L, parallel::detectCores() - 1L),
   continue = " ",
   max.print = 100L,
@@ -21,11 +23,13 @@ set_startup_options(
   error = "rlang",
   menu.graphics = FALSE,
   warnPartialMatchArgs = TRUE,
+  warnPartialMatchDollar = TRUE,
   scipen = 999L,
   HTTPUserAgent = sprintf("R/\%s R (\%s)", getRversion(), paste(getRversion(),
     R.version$platform, R.version$arch, R.version$os)),
   download.file.extra = sprintf("--header \\"User-Agent: R (\%s)\\"",
     paste(getRversion(), R.version$platform, R.version$arch, R.version$os)),
+  show.error.locations = TRUE,
   ...
 )
 }
@@ -35,6 +39,9 @@ set_startup_options(
 \item{show.signif.stars}{Default \code{FALSE}}
 
 \item{useFancyQuotes}{Default \code{FALSE}}
+
+\item{setWidthOnResize}{If set and TRUE, R run in a terminal using a recent readline
+library will set the width option when the terminal is resized.}
 
 \item{width}{Default cli::console_width() + 13L. See details.}
 
@@ -61,6 +68,8 @@ set_startup_options(
 \item{HTTPUserAgent}{Used by RStudio Package Manager (RSPM).}
 
 \item{download.file.extra}{Used by RSPM for curl/wget installs, e.g. Rscript.}
+
+\item{show.error.locations}{Show error locations for sourcing}
 
 \item{...}{Other arguments passed to \code{options}.}
 }
