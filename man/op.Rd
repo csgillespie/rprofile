@@ -2,9 +2,7 @@
 % Please edit documentation in R/rstudio-projects.R
 \name{op}
 \alias{op}
-\title{RStudio projects
-
-A command line version of opening RStudio projects.}
+\title{RStudio projects}
 \usage{
 op(path = ".")
 }
@@ -12,8 +10,6 @@ op(path = ".")
 \item{path}{Path to the (proposed) RStudio project.}
 }
 \description{
-RStudio projects
-
 A command line version of opening RStudio projects.
 }
 \examples{

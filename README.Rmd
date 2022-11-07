@@ -50,9 +50,9 @@ The R prompt has also been customised (using the __prompt__ package):
 
  * If you are in a Git repo, the branch will be displayed.
  * If R's memory becomes large, the size will be displayed.
- 
+
 A distinction needs to be made between the RStudio Console and the terminal. The console
-already has lots of nice features, e.g. syntax highlighting. So I have two 
+already has lots of nice features, e.g. syntax highlighting. So I have two
 separated functions.
 
 ![](man/figures/prompt.png)
@@ -64,7 +64,6 @@ Currently three start-up messages are displayed:
  * The wifi network you are connected to with speed info
  * The number of open R sessions
  * RStudio Project info
- 
 
 ![](man/figures/startup-message.png)
 
@@ -75,22 +74,22 @@ functions I'm fairly sure won't be used in a script.
 
  * `create_make_functions()` - if you have a `Makefile` in your working directory, this will
  automatically generate all associated make functions. For example, if you have a `force` argument in the `Makefile` this will generate `make_force()`
- 
+
  * `lsos()` - a handy function for listing large objects
- 
+
  * `library()` - Over writes the `library()` function with a smarter version. If a package
  is missing, automatically provides the option to install from CRAN or GitHub
- 
+
  * `last_error()` and `last_trace()` - pre-loads from __rlang__. Nicer error investigation
 
 ### RStudio functions
 
  * `op(path = ".")` - Creates & opens an RStudio project in the the directory specified
- 
+
  * `cp()` - Lists previous RStudio projects and gives an option to open.
- 
+
  * `inf_mr()` - Shortcut to `xaringan::inf_mr()`.
- 
+
 ![](man/figures/cp.png)
 
 ### Setting Better `options()`
@@ -146,22 +145,20 @@ setHook("rstudio.sessionInit", function(newSession) {
 
 ## Notes
 
- * The `lsos()` function was taken from the [SO](https://stackoverflow.com/q/1358003/203420) 
+ * The `lsos()` function was taken from the [SO](https://stackoverflow.com/q/1358003/203420)
  question.
- 
- * The improved version of `library()` was adapted from the 
- [autoinst](https://github.com/jimhester/autoinst/). I did think about importing the package, 
+
+ * The improved version of `library()` was adapted from the
+ [autoinst](https://github.com/jimhester/autoinst/). I did think about importing the package,
  but I had made too many personal tweaks.
- 
- * Setting the prompt uses the excellent [prompt](https://github.com/gaborcsardi/prompt) 
+
+ * Setting the prompt uses the excellent [prompt](https://github.com/gaborcsardi/prompt)
  package.
- 
+
  * I've probably "borrowed" some of the other ideas from blogposts and SO questions. If I've missed crediting you, please let me know and I'll rectify it.
- 
+
 Other information
 -----------------
 
  * If you have any suggestions or find bugs, please use the github [issue tracker](https://github.com/csgillespie/rprofile/issues)
  * Feel free to submit pull requests
-
-

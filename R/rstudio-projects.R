@@ -5,7 +5,7 @@ ip = function(path = getwd()) {
 
 #' @title RStudio projects
 #'
-#' A command line version of opening RStudio projects.
+#' @description A command line version of opening RStudio projects.
 #' @param path Path to the (proposed) RStudio project.
 #' @examples
 #' \dontrun{
@@ -48,7 +48,6 @@ get_shorten_paths = function(paths) {
   return(shorten_path)
 }
 
-
 get_rprojs = function() {
   fname = "~/.local/share/rstudio/monitored/lists/project_mru" #nolint
   if (file.exists(fname)) return(readLines(fname))
@@ -57,10 +56,9 @@ get_rprojs = function() {
   stop("Unable to find Rproject list")
 }
 
-
 #' @title Choose an RStudio Project
 #'
-#' Command line version for choosing RStudio projects
+#' @description Command line version for choosing RStudio projects
 #' @param path Default \code{NULL}. If not \code{NULL}, path is passed to \code{op}.
 #' @examples
 #' \dontrun{

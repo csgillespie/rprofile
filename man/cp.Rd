@@ -2,9 +2,7 @@
 % Please edit documentation in R/rstudio-projects.R
 \name{cp}
 \alias{cp}
-\title{Choose an RStudio Project
-
-Command line version for choosing RStudio projects}
+\title{Choose an RStudio Project}
 \usage{
 cp(path = NULL)
 }
@@ -12,8 +10,6 @@ cp(path = NULL)
 \item{path}{Default \code{NULL}. If not \code{NULL}, path is passed to \code{op}.}
 }
 \description{
-Choose an RStudio Project
-
 Command line version for choosing RStudio projects
 }
 \examples{
