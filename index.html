@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,18 +35,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rprofile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.11</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -64,31 +60,30 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="my-opinionated-rprofile" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#my-opinionated-rprofile" class="anchor"></a>My opinionated .Rprofile</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="my-opinionated-rprofile">My opinionated .Rprofile<a class="anchor" aria-label="anchor" href="#my-opinionated-rprofile"></a>
+</h1></div>
 <!-- badges: start -->
-
 <p>A package (of my) Rprofile customisations. The goal is it broaden the package to be of use to other people.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"csgillespie/rprofile"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"csgillespie/rprofile"</span><span class="op">)</span></span></code></pre></div>
 <p>The package also uses two non-cran packages</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Used for nice prompts</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"gaborcsardi/prompt"</span><span class="op">)</span>
-
-<span class="co"># Used for nice colours in the terminal</span>
-<span class="co"># Not for Windows</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"jalvesaq/colorout"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Used for nice prompts</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"gaborcsardi/prompt"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Used for nice colours in the terminal</span></span>
+<span><span class="co"># Not for Windows</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"jalvesaq/colorout"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="r-prompt" class="section level2">
-<h2 class="hasAnchor">
-<a href="#r-prompt" class="anchor"></a>R Prompt</h2>
+<div class="section level2">
+<h2 id="r-prompt">R Prompt<a class="anchor" aria-label="anchor" href="#r-prompt"></a>
+</h2>
 <p>The R prompt has also been customised (using the <strong>prompt</strong> package):</p>
 <ul>
 <li>If you are in a Git repo, the branch will be displayed.</li>
@@ -96,9 +91,9 @@
 </ul>
 <p>A distinction needs to be made between the RStudio Console and the terminal. The console already has lots of nice features, e.g. syntax highlighting. So I have two separated functions.</p>
 <p><img src="reference/figures/prompt.png"></p>
-<div id="useful-start-up-messages" class="section level3">
-<h3 class="hasAnchor">
-<a href="#useful-start-up-messages" class="anchor"></a>Useful Start-up Messages</h3>
+<div class="section level3">
+<h3 id="useful-start-up-messages">Useful Start-up Messages<a class="anchor" aria-label="anchor" href="#useful-start-up-messages"></a>
+</h3>
 <p>Currently three start-up messages are displayed:</p>
 <ul>
 <li>The wifi network you are connected to with speed info</li>
@@ -107,30 +102,30 @@
 </ul>
 <p><img src="reference/figures/startup-message.png"></p>
 </div>
-<div id="helper-functions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#helper-functions" class="anchor"></a>Helper Functions</h3>
+<div class="section level3">
+<h3 id="helper-functions">Helper Functions<a class="anchor" aria-label="anchor" href="#helper-functions"></a>
+</h3>
 <p>It’s always dangerous to load functions in your start-up script, so I’ve only included functions I’m fairly sure won’t be used in a script.</p>
 <ul>
 <li><p><code><a href="reference/create_make_functions.html">create_make_functions()</a></code> - if you have a <code>Makefile</code> in your working directory, this will automatically generate all associated make functions. For example, if you have a <code>force</code> argument in the <code>Makefile</code> this will generate <code>make_force()</code></p></li>
 <li><p><code>lsos()</code> - a handy function for listing large objects</p></li>
-<li><p><code><a href="https://rdrr.io/r/base/library.html">library()</a></code> - Over writes the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function with a smarter version. If a package is missing, automatically provides the option to install from CRAN or GitHub</p></li>
+<li><p><code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> - Over writes the <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> function with a smarter version. If a package is missing, automatically provides the option to install from CRAN or GitHub</p></li>
 <li><p><code>last_error()</code> and <code>last_trace()</code> - pre-loads from <strong>rlang</strong>. Nicer error investigation</p></li>
 </ul>
 </div>
-<div id="rstudio-functions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#rstudio-functions" class="anchor"></a>RStudio functions</h3>
+<div class="section level3">
+<h3 id="rstudio-functions">RStudio functions<a class="anchor" aria-label="anchor" href="#rstudio-functions"></a>
+</h3>
 <ul>
-<li><p><code><a href="reference/op.html">op(path = ".")</a></code> - Creates &amp; opens an RStudio project in the the directory specified</p></li>
+<li><p><code>op(path = ".")</code> - Creates &amp; opens an RStudio project in the the directory specified</p></li>
 <li><p><code><a href="reference/cp.html">cp()</a></code> - Lists previous RStudio projects and gives an option to open.</p></li>
-<li><p><code>inf_mr()</code> - Shortcut to <code><a href="https://rdrr.io/pkg/xaringan/man/inf_mr.html">xaringan::inf_mr()</a></code>.</p></li>
+<li><p><code>inf_mr()</code> - Shortcut to <code><a href="https://rdrr.io/pkg/xaringan/man/inf_mr.html" class="external-link">xaringan::inf_mr()</a></code>.</p></li>
 </ul>
 <p><img src="reference/figures/cp.png"></p>
 </div>
-<div id="setting-better-options" class="section level3">
-<h3 class="hasAnchor">
-<a href="#setting-better-options" class="anchor"></a>Setting Better <code>options()</code>
+<div class="section level3">
+<h3 id="setting-better-options">Setting Better <code>options()</code>
+<a class="anchor" aria-label="anchor" href="#setting-better-options"></a>
 </h3>
 <p>The <code><a href="reference/set_startup_options.html">set_startup_options()</a></code> function sets better (in my opinion) set of start-up options. These include</p>
 <ul>
@@ -142,11 +137,11 @@
 <p>I’ve also created a convenience function for adding additional R repositories - <code><a href="reference/set_repos.html">set_repos()</a></code>. Probably not needed by most people.</p>
 </div>
 </div>
-<div id="example-rprofile" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-rprofile" class="anchor"></a>Example <code>.Rprofile</code>
+<div class="section level2">
+<h2 id="example-rprofile">Example <code>.Rprofile</code>
+<a class="anchor" aria-label="anchor" href="#example-rprofile"></a>
 </h2>
-<p>Open your <code>.Rprofile</code>, e.g. <code><a href="https://rdrr.io/r/utils/file.edit.html">file.edit("~/.Rprofile")</a></code> and customise however you want. Here’s an example</p>
+<p>Open your <code>.Rprofile</code>, e.g. <code>file.edit("~/.Rprofile")</code> and customise however you want. Here’s an example</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Set options for Rscript -e calls</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="cf">if</span> (<span class="kw">requireNamespace</span>(<span class="st">"rprofile"</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>)) {</span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="co"># Call here if needed</span></span>
@@ -177,21 +172,21 @@
 <span id="cb3-28"><a href="#cb3-28"></a>  }</span>
 <span id="cb3-29"><a href="#cb3-29"></a>}, <span class="dt">action =</span> <span class="st">"append"</span>)</span></code></pre></div>
 </div>
-<div id="notes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#notes" class="anchor"></a>Notes</h2>
+<div class="section level2">
+<h2 id="notes">Notes<a class="anchor" aria-label="anchor" href="#notes"></a>
+</h2>
 <ul>
-<li><p>The <code>lsos()</code> function was taken from the <a href="https://stackoverflow.com/q/1358003/203420">SO</a> question.</p></li>
-<li><p>The improved version of <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> was adapted from the <a href="https://github.com/jimhester/autoinst/">autoinst</a>. I did think about importing the package, but I had made too many personal tweaks.</p></li>
-<li><p>Setting the prompt uses the excellent <a href="https://github.com/gaborcsardi/prompt">prompt</a> package.</p></li>
+<li><p>The <code>lsos()</code> function was taken from the <a href="https://stackoverflow.com/q/1358003/203420" class="external-link">SO</a> question.</p></li>
+<li><p>The improved version of <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> was adapted from the <a href="https://github.com/jimhester/autoinst/" class="external-link">autoinst</a>. I did think about importing the package, but I had made too many personal tweaks.</p></li>
+<li><p>Setting the prompt uses the excellent <a href="https://github.com/gaborcsardi/prompt" class="external-link">prompt</a> package.</p></li>
 <li><p>I’ve probably “borrowed” some of the other ideas from blogposts and SO questions. If I’ve missed crediting you, please let me know and I’ll rectify it.</p></li>
 </ul>
 </div>
-<div id="other-information" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-information" class="anchor"></a>Other information</h2>
+<div class="section level2">
+<h2 id="other-information">Other information<a class="anchor" aria-label="anchor" href="#other-information"></a>
+</h2>
 <ul>
-<li>If you have any suggestions or find bugs, please use the github <a href="https://github.com/csgillespie/rprofile/issues">issue tracker</a>
+<li>If you have any suggestions or find bugs, please use the github <a href="https://github.com/csgillespie/rprofile/issues" class="external-link">issue tracker</a>
 </li>
 <li>Feel free to submit pull requests</li>
 </ul>
@@ -201,38 +196,50 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://www.r-project.org/Licenses/GPL-2">GPL-2</a> | <a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a>
+<a href="https://www.r-project.org/Licenses/GPL-2" class="external-link">GPL-2</a> | <a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a>
 </li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing rprofile</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Colin Gillespie <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=rprofile"><img src="https://www.r-pkg.org/badges/version/rprofile" alt="CRAN status"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/csgillespie/rprofile/actions"><img src="https://github.com/csgillespie/rprofile/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=rprofile" class="external-link"><img src="https://www.r-pkg.org/badges/version/rprofile" alt="CRAN status"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/csgillespie/rprofile/actions" class="external-link"><img src="https://github.com/csgillespie/rprofile/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Colin Gillespie.</p>
+  <p></p>
+<p>Developed by Colin Gillespie.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -240,6 +247,8 @@
 
   
 
+
+  
 
   </body>
 </html>
