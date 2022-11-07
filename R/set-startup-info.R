@@ -8,12 +8,12 @@ get_darwin_internet = function() {
   con = system("route get 10.10.10.10", intern = TRUE, ignore.stderr = TRUE)
   con_interface = stringr::str_trim(stringr::str_remove(con[5], "interface:"))
 
+  # nolint start
   if (is.na(con_interface)) {
     con_type = "None"
   } else {
     con_type = system("networksetup -listallhardwareports | grep -C1 $(route get default | grep interface | awk '{print $2}')", intern = TRUE, ignore.stderr = TRUE)
   }
-
 
   # Wifi
   if (stringr::str_detect(con_type[1], "Wi-Fi")) {
@@ -25,11 +25,8 @@ get_darwin_internet = function() {
     lastTXRate = system("/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I  | awk -F' lastTxRate: '  '/ lastTxRate: / {print $2}'", intern = TRUE)
 
     maxRate = system("/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I  | awk -F' maxRate: '  '/ maxRate: / {print $2}'", intern = TRUE)
-
     signal = as.numeric(wifi_quality)
-
     wifi_signal = signif((signal + 110) * 10 / 7, 0)
-
     wifi_strength = if (signal > 70) {
       green(wifi_signal)
     } else if (wifi_signal > 60) {
@@ -39,9 +36,8 @@ get_darwin_internet = function() {
     } else {
       red(wifi_signal)
     }
-
     wifi_string = glue::glue_col("{green {cli::symbol$tick}} {wifi_name} (Strength: {wifi_strength}, lastTXRate: {lastTXRate}, maxRate: {maxRate})")
-
+    # nolint end
   } else {
     wifi_string = glue::glue_col("{red {cli::symbol$cross}} wifi")
   }
@@ -54,7 +50,6 @@ get_darwin_internet = function() {
   }
   return(con_str)
 }
-
 
 get_linux_internet = function() {
   cons = system2("nmcli", args = c("connection", "show"), stdout = TRUE)

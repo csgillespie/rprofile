@@ -48,7 +48,6 @@ get_shorten_paths = function(paths) {
   return(shorten_path)
 }
 
-
 get_rprojs = function() {
   fname = "~/.local/share/rstudio/monitored/lists/project_mru" #nolint
   if (file.exists(fname)) return(readLines(fname))
@@ -56,7 +55,6 @@ get_rprojs = function() {
   if (file.exists(fname)) return(readLines(fname))
   stop("Unable to find Rproject list")
 }
-
 
 #' @title Choose an RStudio Project
 #'

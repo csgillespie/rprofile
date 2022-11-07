@@ -1,4 +1,3 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # My opinionated .Rprofile
@@ -107,7 +106,6 @@ repositories - `set_repos()`. Probably not needed by most people.
 
 Open your `.Rprofile`, e.g. `file.edit("~/.Rprofile")` and customise
 however you want. Here’s an example
-
 
     # Set options for Rscript -e calls
     if (requireNamespace("rprofile", quietly = TRUE)) {
