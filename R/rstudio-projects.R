@@ -5,7 +5,7 @@ ip = function(path = getwd()) {
 
 #' @title RStudio projects
 #'
-#' A command line version of opening RStudio projects.
+#' @description A command line version of opening RStudio projects.
 #' @param path Path to the (proposed) RStudio project.
 #' @examples
 #' \dontrun{
@@ -60,7 +60,7 @@ get_rprojs = function() {
 
 #' @title Choose an RStudio Project
 #'
-#' Command line version for choosing RStudio projects
+#' @description Command line version for choosing RStudio projects
 #' @param path Default \code{NULL}. If not \code{NULL}, path is passed to \code{op}.
 #' @examples
 #' \dontrun{

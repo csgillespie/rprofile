@@ -24,8 +24,9 @@ rprofile_prompt = function(expr, value, ok, visible) {
   gstatus = try(gert::git_status(), silent = TRUE)
   is_git = class(gstatus) != "try-error"
   if (all(is_git)) {
+    branch_name = stringr::str_trunc(prompt::git_branch(), 15)
     git = paste0("[",
-                 prompt::git_branch(),
+                 branch_name,
                  prompt::git_dirty(),
                  prompt::git_arrows(),
                  "]")

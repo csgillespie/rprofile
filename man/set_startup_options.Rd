@@ -2,17 +2,12 @@
 % Please edit documentation in R/startup-options.R
 \name{set_startup_options}
 \alias{set_startup_options}
-\title{Set Nice Startup Options
-
-Sets nicer options. All arguments are passed to the \code{options} function.
-This function also sets \code{ipck = TRUE} in \code{rc.settings}.}
+\title{Set Nice Startup Options}
 \usage{
 set_startup_options(
   digits = 4L,
   show.signif.stars = FALSE,
   useFancyQuotes = FALSE,
-  setWidthOnResize = TRUE,
-  check.bounds = TRUE,
   width = (cli::console_width() + 17L),
   Ncpus = max(1L, parallel::detectCores() - 1L),
   continue = " ",
@@ -20,16 +15,19 @@ set_startup_options(
   servr.daemon = TRUE,
   max = 10L,
   mc.cores = max(1L, parallel::detectCores() - 1L),
-  error = "rlang",
-  menu.graphics = FALSE,
   warnPartialMatchArgs = TRUE,
   warnPartialMatchDollar = TRUE,
+  warnPartialMatchAttr = TRUE,
   scipen = 999L,
   HTTPUserAgent = sprintf("R/\%s R (\%s)", getRversion(), paste(getRversion(),
     R.version$platform, R.version$arch, R.version$os)),
   download.file.extra = sprintf("--header \\"User-Agent: R (\%s)\\"",
     paste(getRversion(), R.version$platform, R.version$arch, R.version$os)),
+  setWidthOnResize = TRUE,
   show.error.locations = TRUE,
+  check.bounds = TRUE,
+  menu.graphics = FALSE,
+  error = "rlang",
   ...
 )
 }
@@ -39,9 +37,6 @@ set_startup_options(
 \item{show.signif.stars}{Default \code{FALSE}}
 
 \item{useFancyQuotes}{Default \code{FALSE}}
-
-\item{setWidthOnResize}{If set and TRUE, R run in a terminal using a recent readline
-library will set the width option when the terminal is resized.}
 
 \item{width}{Default cli::console_width() + 13L. See details.}
 
@@ -57,11 +52,8 @@ library will set the width option when the terminal is resized.}
 
 \item{mc.cores}{Default number of CPUs - 1. Used for parallel computing}
 
-\item{error}{Default \code{rlang}. If \code{rlang} is installed, then error = rlang::entrace.}
-
-\item{menu.graphics}{Default \code{FALSE}. Logical: should graphical menus be used if available?}
-
-\item{warnPartialMatchArgs}{Default \code{TRUE}. Warn if using partial arguments.}
+\item{warnPartialMatchArgs, warnPartialMatchAttr, warnPartialMatchDollar}{Default \code{TRUE}.
+Warn if using partial arguments.}
 
 \item{scipen}{Default \code{999}. Always print out full numbers, i.e. not 1e2}
 
@@ -69,13 +61,21 @@ library will set the width option when the terminal is resized.}
 
 \item{download.file.extra}{Used by RSPM for curl/wget installs, e.g. Rscript.}
 
+\item{setWidthOnResize}{If set and TRUE, R run in a terminal using a recent readline
+library will set the width option when the terminal is resized.}
+
 \item{show.error.locations}{Show error locations for sourcing}
+
+\item{check.bounds}{logical, defaulting to FALSE. If true, a warning is produced whenever a
+vector (atomic or list) is extended, by something like x <- 1:3; x[5] <- 6.}
+
+\item{menu.graphics}{Default \code{FALSE}. Logical: should graphical menus be used if available?}
+
+\item{error}{Default \code{rlang}. If \code{rlang} is installed, then error = rlang::entrace.}
 
 \item{...}{Other arguments passed to \code{options}.}
 }
 \description{
-Set Nice Startup Options
-
 Sets nicer options. All arguments are passed to the \code{options} function.
 This function also sets \code{ipck = TRUE} in \code{rc.settings}.
 }

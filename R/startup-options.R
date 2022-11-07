@@ -1,9 +1,11 @@
 #' @title Set Nice Startup Options
 #'
-#' Sets nicer options. All arguments are passed to the \code{options} function.
+#' @description Sets nicer options. All arguments are passed to the \code{options} function.
 #' This function also sets \code{ipck = TRUE} in \code{rc.settings}.
 #' @param digits Default \code{4}
 #' @param show.signif.stars Default \code{FALSE}
+#' @param check.bounds logical, defaulting to FALSE. If true, a warning is produced whenever a
+#' vector (atomic or list) is extended, by something like x <- 1:3; x[5] <- 6.
 #' @param useFancyQuotes Default \code{FALSE}
 #' @param setWidthOnResize If set and TRUE, R run in a terminal using a recent readline
 #' library will set the width option when the terminal is resized.
@@ -16,7 +18,8 @@
 #' @param mc.cores Default number of CPUs - 1. Used for parallel computing
 #' @param error Default \code{rlang}. If \code{rlang} is installed, then error = rlang::entrace.
 #' @param menu.graphics Default \code{FALSE}. Logical: should graphical menus be used if available?
-#' @param warnPartialMatchArgs Default \code{TRUE}. Warn if using partial arguments.
+#' @param warnPartialMatchArgs,warnPartialMatchAttr,warnPartialMatchDollar Default \code{TRUE}.
+#' Warn if using partial arguments.
 #' @param scipen Default \code{999}. Always print out full numbers, i.e. not 1e2
 #' @param HTTPUserAgent Used by RStudio Package Manager (RSPM).
 #' @param download.file.extra Used by RSPM for curl/wget installs, e.g. Rscript.
@@ -32,8 +35,6 @@ set_startup_options = function(
     digits = 4L,
     show.signif.stars = FALSE, #nolint
     useFancyQuotes = FALSE, #nolint
-    setWidthOnResize = TRUE,
-    check.bounds = TRUE,
     width = (cli::console_width() + 17L),
     Ncpus = max(1L, parallel::detectCores() - 1L),
     continue = " ",
@@ -41,10 +42,9 @@ set_startup_options = function(
     servr.daemon = TRUE, # For xaringan presentations,
     max = 10L, # List printing
     mc.cores = max(1L, parallel::detectCores() - 1L),
-    error = "rlang",
-    menu.graphics = FALSE,
     warnPartialMatchArgs = TRUE, # nolint
     warnPartialMatchDollar = TRUE,
+    warnPartialMatchAttr = TRUE, # nolint
     scipen = 999L,               # nolint
     HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(),
                             paste(getRversion(),
@@ -54,7 +54,12 @@ set_startup_options = function(
     download.file.extra = sprintf("--header \"User-Agent: R (%s)\"",
                                   paste(getRversion(), R.version$platform,
                                         R.version$arch, R.version$os)),
+
+    setWidthOnResize = TRUE,
     show.error.locations = TRUE, #nolint
+    check.bounds = TRUE,
+    menu.graphics = FALSE,
+    error = "rlang",
     ...) {
 
   options(digits = digits,
@@ -68,11 +73,15 @@ set_startup_options = function(
           max = max, # List printing
           mc.cores = mc.cores,
           warnPartialMatchArgs = warnPartialMatchArgs,
+          warnPartialMatchDollar = warnPartialMatchDollar,
+          warnPartialMatchAttr = warnPartialMatchAttr,
           scipen = scipen,
           HTTPUserAgent = HTTPUserAgent,
           download.file.extra = download.file.extra,
           setWidthOnResize = setWidthOnResize,
           show.error.locations = show.error.locations,
+          check.bounds = check.bounds,
+          menu.graphics = menu.graphics,
           ...)
   if (error == "rlang") {
     if (requireNamespace("rlang", quietly = TRUE)) options(error = rlang::entrace)

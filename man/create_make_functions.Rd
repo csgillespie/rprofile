@@ -2,9 +2,7 @@
 % Please edit documentation in R/make-file-generator.R
 \name{create_make_functions}
 \alias{create_make_functions}
-\title{Generate make functions
-
-Parses Makefile and automatically creates make_* functions}
+\title{Generate make functions}
 \usage{
 create_make_functions(path = ".")
 }
@@ -12,7 +10,5 @@ create_make_functions(path = ".")
 \item{path}{Location of Makefile}
 }
 \description{
-Generate make functions
-
 Parses Makefile and automatically creates make_* functions
 }

@@ -24,7 +24,7 @@ make_fun_factory = function(target) {
 
 #' @title Generate make functions
 #'
-#' Parses Makefile and automatically creates make_* functions
+#' @description Parses Makefile and automatically creates make_* functions
 #' @param path Location of Makefile
 #' @export
 create_make_functions = function(path = ".") {

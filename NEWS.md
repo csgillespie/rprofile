@@ -1,5 +1,8 @@
-# rprofile 0.1.10 _2021-11-16_
+# rprofile 0.1.11 _2022-11-07_
   * Set `setWidthOnResize=TRUE` in options
+  * Truncate long branch names
+  * Set `check.bounds` in options
+  * Set `warnPartialMatchAttr` in options
 
 # rprofile 0.1.10 _2021-06-13_
   * Use `suppressMessages()` to silence `prettycode::prettycode()` - fixes #10
