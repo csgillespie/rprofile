@@ -1,5 +1,5 @@
 # Uses git stripspace to clean files.
-# Not particuraly elegant code. But a quick first pass to see if I like it
+# Not particularly elegant code. But a quick first pass to see if I like it
 stripspace = function() {
   fnames = list.files(pattern = "\\.R$|\\.qmd$|\\.Rmd$|\\.md$", full.names = TRUE, recursive = TRUE)
   tmp = tempfile()
