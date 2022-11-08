@@ -22,7 +22,7 @@ rprofile_prompt = function(expr, value, ok, visible) {
 
   mem = display_memuse()
   gstatus = try(gert::git_status(), silent = TRUE)
-  is_git = class(gstatus) != "try-error"
+  is_git = !inherits(gstatus, "try-error")
   if (all(is_git)) {
     branch_name = stringr::str_trunc(prompt::git_branch(), 15)
     git = paste0("[",

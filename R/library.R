@@ -57,12 +57,12 @@ multicol = function(x) {
 #' @importFrom remotes install_github
 autoinst = function(package, ...) {
   pkg = try(as.character(package), silent = TRUE)
-  if (class(pkg) == "try-error") {
+  if (inherits(pkg, "try-error")) {
     pkg = as.character(substitute(package))
   }
   has_loaded = try(base::library(pkg, character.only = TRUE),
                    silent = TRUE)
-  if (class(has_loaded) != "try-error") {
+  if (!inherits(has_loaded, "try-error")) {
     return(invisible(NULL))
   }
   #  pkg = as.character(substitute(package)) # nolint

@@ -29,6 +29,8 @@ set_functions(
 \item{load_library}{Default TRUE}
 
 \item{load_inf_mr}{Default TRUE. Create shortcut to \code{xaringan::inf_mr}.}
+
+\item{load_stripspace}{Default TRUE}
 }
 \description{
 Returns the hidden environment that contains the hidden functions.
