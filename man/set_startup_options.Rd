@@ -25,7 +25,7 @@ set_startup_options(
     paste(getRversion(), R.version$platform, R.version$arch, R.version$os)),
   setWidthOnResize = TRUE,
   show.error.locations = TRUE,
-  check.bounds = TRUE,
+  check.bounds = FALSE,
   menu.graphics = FALSE,
   error = "rlang",
   ...

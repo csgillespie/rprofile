@@ -11,7 +11,8 @@ set_functions(
   load_cp = TRUE,
   load_op = TRUE,
   load_library = TRUE,
-  load_inf_mr = TRUE
+  load_inf_mr = TRUE,
+  load_stripspace = TRUE
 )
 }
 \arguments{

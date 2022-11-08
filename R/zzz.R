@@ -9,6 +9,7 @@
 #' @param load_cp  Default TRUE
 #' @param load_op  Default TRUE
 #' @param load_library  Default TRUE
+#' @param load_stripspace Default TRUE
 #' @param load_inf_mr Default TRUE. Create shortcut to \code{xaringan::inf_mr}.
 #' @export
 set_functions = function(load_last_error = TRUE,
@@ -17,7 +18,8 @@ set_functions = function(load_last_error = TRUE,
                          load_cp = TRUE,
                          load_op = TRUE,
                          load_library = TRUE,
-                         load_inf_mr = TRUE) {
+                         load_inf_mr = TRUE,
+                         load_stripspace = TRUE) {
   if (isTRUE(load_last_error)) .rprofile$last_error = rlang::last_error
   if (isTRUE(load_last_trace)) .rprofile$last_trace = rlang::last_trace
   if (isTRUE(load_lsos)) .rprofile$lsos = lsos
@@ -28,5 +30,6 @@ set_functions = function(load_last_error = TRUE,
   if (isTRUE(load_inf_mr) && requireNamespace("xaringan", quietly = TRUE)) {
     .rprofile$inf_mr = xaringan::inf_mr
   }
+  if (isTRUE(load_stripspace)) .rprofile$stripspace = stripspace
   return(.rprofile)
 }

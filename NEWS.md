@@ -1,3 +1,7 @@
+# rprofile 0.1.12 _2022-11-08_
+  * Add `stripspace()` function for cleaning files
+  * Remove `check.bounds` option - too noisy
+
 # rprofile 0.1.11 _2022-11-07_
   * Set `setWidthOnResize=TRUE` in options
   * Truncate long branch names

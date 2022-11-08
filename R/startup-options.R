@@ -57,7 +57,7 @@ set_startup_options = function(
 
     setWidthOnResize = TRUE,
     show.error.locations = TRUE, #nolint
-    check.bounds = TRUE,
+    check.bounds = FALSE,
     menu.graphics = FALSE,
     error = "rlang",
     ...) {
