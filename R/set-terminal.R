@@ -29,7 +29,8 @@ set_terminal = function(rdoc = TRUE, colorout = TRUE,
   if (isTRUE(colorout) && requireNamespace("colorout", quietly = TRUE)) {
       base::library("colorout")
   }
-  prompt::set_prompt(rprofile_prompt)
+  # For some reason width is out on normal R terminals
+  prompt::set_prompt(prompt::prompt_git)
 }
 
 #' @rdname is_terminal

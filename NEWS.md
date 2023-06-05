@@ -1,3 +1,6 @@
+# rprofile 0.1.13 _2023-06-05_
+  * fix: Use prompts from {prompt} to avoid odd terminal resizing. 
+  
 # rprofile 0.1.12 _2022-11-08_
   * Add `stripspace()` function for cleaning files
   * Remove `check.bounds` option - too noisy
