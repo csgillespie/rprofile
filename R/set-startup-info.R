@@ -1,7 +1,8 @@
 #TODO
 #ip link
 #cat /sys/class/net/<interface>/speed # Ethernet speed
-
+# Used in glue, so namespacing is annoying
+#' @importFrom crayon green red blue yellow italic bold make_style
 get_darwin_internet = function() {
 
   # Connections
@@ -28,13 +29,13 @@ get_darwin_internet = function() {
     signal = as.numeric(wifi_quality)
     wifi_signal = signif((signal + 110) * 10 / 7, 0)
     wifi_strength = if (signal > 70) {
-      green(wifi_signal)
+      crayon::green(wifi_signal)
     } else if (wifi_signal > 60) {
-      green(wifi_signal)
+      crayon::green(wifi_signal)
     } else if (wifi_signal > 50) {
-      yellow(wifi_signal)
+      crayon::yellow(wifi_signal)
     } else {
-      red(wifi_signal)
+      crayon::red(wifi_signal)
     }
     wifi_string = glue::glue_col("{green {cli::symbol$tick}} {wifi_name} (Strength: {wifi_strength}, lastTXRate: {lastTXRate}, maxRate: {maxRate})")
     # nolint end
@@ -54,7 +55,7 @@ get_darwin_internet = function() {
 get_linux_internet = function() {
   cons = system2("nmcli", args = c("connection", "show"), stdout = TRUE)
 
-  if (length(cons) <= 1L) return(crayon::red(symbol$cross))
+  if (length(cons) <= 1L) return(crayon::red(cli::symbol$cross))
   start_locs = stringr::str_locate(cons[1], c("NAME", "UUID", "TYPE", "DEVICE"))
   start_locs = start_locs[, 1]
   end_locs = numeric(4)
@@ -79,13 +80,13 @@ get_linux_internet = function() {
 
     wifi_signal = signif((signal + 110) * 10 / 7, 0)
     wifi_strength = if (signal > 70) {
-      green(wifi_signal)
+      crayon::green(wifi_signal)
     } else if (wifi_signal > 60) {
-      green(wifi_signal)
+      crayon::green(wifi_signal)
     } else if (wifi_signal > 50) {
-      yellow(wifi_signal)
+      crayon::yellow(wifi_signal)
     } else {
-      red(wifi_signal)
+      crayon::red(wifi_signal)
     }
     wifi_string = glue::glue_col("{green {cli::symbol$tick}} {wifi_name} ({wifi_strength})")
   } else {
@@ -109,7 +110,6 @@ get_windows_internet = function() {
   glue::glue("{wifi_name} (", trimws("{wifi_signal}"), ")")
 }
 
-#' @importFrom tibble tibble
 get_internet = function() {
   if (Sys.info()[["sysname"]] == "Windows") {
     con_str = get_windows_internet()
@@ -138,13 +138,13 @@ get_r_sessions = function() {
 get_active_rproj = function() {
   wd = get_shorten_paths(getwd())
 
-  if (isFALSE(rstudioapi::isAvailable())) return(glue::glue("{red(symbol$cross)} ({wd})"))
+  if (isFALSE(rstudioapi::isAvailable())) return(glue::glue("{red(cli::symbol$cross)} ({wd})"))
   active_proj = rstudioapi::getActiveProject()
   rproj = list.files(pattern = "\\.Rproj$")
   if (length(rproj) == 0L && is.null(active_proj)) return(NULL)
 
   if (is.null(active_proj)) {
-    msg = glue::glue_col("{blue}{symbol$info} {rproj} available ({wd})")
+    msg = glue::glue_col("{blue}{cli::symbol$info} {rproj} available ({wd})")
   } else {
     active_proj = basename(active_proj)
     msg = glue::glue_col("{green}{active_proj} ({wd})")

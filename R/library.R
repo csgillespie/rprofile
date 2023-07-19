@@ -4,7 +4,6 @@
 ## tweak autoinst
 ## It has now been adapted
 
-#' @importFrom memoise memoise
 available_packages = memoise::memoise(utils::available.packages)
 
 gh_pkg = memoise::memoise(function(pkg) {
@@ -38,7 +37,6 @@ display_matches = function(matches) {
   cat(multicol(paste0(sprintf(paste0("%", width_nums, "s"), nums), "| ", matches)), sep = "")
 }
 
-#' @importFrom remotes install_github
 # From gaborcsardi/crayon/R/utils.r
 multicol = function(x) {
   xs = x
@@ -54,7 +52,6 @@ multicol = function(x) {
 }
 
 # TODO: use lighter version of install_github
-#' @importFrom remotes install_github
 autoinst = function(package, ...) {
   pkg = try(as.character(package), silent = TRUE)
   if (inherits(pkg, "try-error")) {

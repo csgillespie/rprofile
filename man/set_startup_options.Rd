@@ -8,7 +8,7 @@ set_startup_options(
   digits = 4L,
   show.signif.stars = FALSE,
   useFancyQuotes = FALSE,
-  width = (cli::console_width() + 17L),
+  width = cli::console_width(),
   Ncpus = max(1L, parallel::detectCores() - 1L),
   continue = " ",
   max.print = 100L,

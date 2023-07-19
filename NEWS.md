@@ -1,3 +1,7 @@
+# rprofile 0.1.14 _2023-07-19_
+  * refactor: Remove importFrom where possible
+  * feat: Use tibbles for lsos
+
 # rprofile 0.1.13 _2023-06-05_
   * fix: Use prompts from {prompt} to avoid odd terminal resizing. 
   
