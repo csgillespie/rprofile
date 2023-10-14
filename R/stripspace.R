@@ -4,9 +4,13 @@ stripspace = function() {
   fnames = list.files(pattern = "\\.R$|\\.qmd$|\\.Rmd$|\\.md$", full.names = TRUE, recursive = TRUE)
   tmp = tempfile()
   for (fname in fnames) {
-    cli::cli_alert("Updating {fname}")
+    hash1 = rlang::hash_file(fname)
     system2("git", c("stripspace", "<", fname, ">", tmp))
-    system2("cat", c(tmp, ">", fname))
+    hash2 = rlang::hash_file(tmp)
+    if (hash1 != hash2) {
+      cli::cli_alert("Updating {fname}")
+      system2("cat", c(tmp, ">", fname))
+    }
   }
   return(invisible(NULL))
 }

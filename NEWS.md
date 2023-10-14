@@ -1,10 +1,15 @@
+# rprofile.setup 0.2.0 _2023-07-19_
+  * feat: Rename package as there is now an {rprofile} package on CRAN
+  * refactor: `get_r_sessions()` remove `greps` using `str_detect()`
+  * refactor: `stripspace()` only update if the file has changed
+
 # rprofile 0.1.14 _2023-07-19_
   * refactor: Remove importFrom where possible
   * feat: Use tibbles for lsos
 
 # rprofile 0.1.13 _2023-06-05_
-  * fix: Use prompts from {prompt} to avoid odd terminal resizing. 
-  
+  * fix: Use prompts from {prompt} to avoid odd terminal resizing.
+
 # rprofile 0.1.12 _2022-11-08_
   * Add `stripspace()` function for cleaning files
   * Remove `check.bounds` option - too noisy

@@ -123,12 +123,16 @@ get_internet = function() {
   return(con_str)
 }
 
+remove_greps = function(r_sessions) {
+  stringr::str_detect()
+}
+
 get_r_sessions = function() {
   if (Sys.info()[["sysname"]] %in% c("Linux", "Darwin")) {
-    r_sessions = system2("ps", args = c("aux", "|", "grep", "rsession"), stdout = TRUE)
-    no_sessions = length(r_sessions) - 2
-    r_sessions = system2("ps", args = c("aux", "|", "grep", "exec/R"), stdout = TRUE)
-    return(no_sessions + length(r_sessions) - 2)
+    r_sessions = c(system2("ps", args = c("aux", "|", "grep", "rsession"), stdout = TRUE),
+                   system2("ps", args = c("aux", "|", "grep", "exec/R"), stdout = TRUE))
+    no_of_sessions = sum(stringr::str_detect(r_sessions, "grep", negate = TRUE))
+    return(no_of_sessions)
   }
   return("Unknown system")
 }
