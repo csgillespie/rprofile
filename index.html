@@ -64,6 +64,7 @@
 <div class="page-header"><h1 id="my-opinionated-rprofile">My opinionated .Rprofile<a class="anchor" aria-label="anchor" href="#my-opinionated-rprofile"></a>
 </h1></div>
 <!-- badges: start -->
+
 <p>A package (of my) Rprofile customisations. The goal is it broaden the package to be of use to other people.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -142,35 +143,35 @@
 <a class="anchor" aria-label="anchor" href="#example-rprofile"></a>
 </h2>
 <p>Open your <code>.Rprofile</code>, e.g. <code>file.edit("~/.Rprofile")</code> and customise however you want. Here’s an example</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Set options for Rscript -e calls</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="cf">if</span> (<span class="kw">requireNamespace</span>(<span class="st">"rprofile"</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>)) {</span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="co"># Call here if needed</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="co"># rprofile::set_repos()</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  rprofile<span class="op">::</span><span class="kw">set_startup_options</span>()</span>
-<span id="cb3-6"><a href="#cb3-6"></a>}</span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="cf">if</span> (<span class="kw">interactive</span>() <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">requireNamespace</span>(<span class="st">"rprofile"</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>)) {</span>
-<span id="cb3-9"><a href="#cb3-9"></a>  rprofile<span class="op">::</span><span class="kw">create_make_functions</span>()</span>
-<span id="cb3-10"><a href="#cb3-10"></a>  <span class="co"># Not RStudio OR RStudio console</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>  <span class="cf">if</span> (rprofile<span class="op">::</span><span class="kw">is_terminal</span>()) {</span>
-<span id="cb3-12"><a href="#cb3-12"></a>    rprofile<span class="op">::</span><span class="kw">set_terminal</span>()</span>
-<span id="cb3-13"><a href="#cb3-13"></a>  } <span class="cf">else</span> {</span>
-<span id="cb3-14"><a href="#cb3-14"></a>    rprofile<span class="op">::</span><span class="kw">set_rstudio</span>()</span>
-<span id="cb3-15"><a href="#cb3-15"></a>  }</span>
-<span id="cb3-16"><a href="#cb3-16"></a>  .env =<span class="st"> </span>rprofile<span class="op">::</span><span class="kw">set_functions</span>()</span>
-<span id="cb3-17"><a href="#cb3-17"></a>  <span class="kw">attach</span>(.env)</span>
-<span id="cb3-18"><a href="#cb3-18"></a>  <span class="co"># Display wifi and no of R sessions</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a>  <span class="co"># Linux only</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a>  rprofile<span class="op">::</span><span class="kw">set_startup_info</span>()</span>
-<span id="cb3-21"><a href="#cb3-21"></a>}</span>
-<span id="cb3-22"><a href="#cb3-22"></a></span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="co"># Prints RStudio project on start-up</span></span>
-<span id="cb3-24"><a href="#cb3-24"></a><span class="kw">setHook</span>(<span class="st">"rstudio.sessionInit"</span>, <span class="cf">function</span>(newSession) {</span>
-<span id="cb3-25"><a href="#cb3-25"></a>  active_rproj =<span class="st"> </span>rprofile<span class="op">::</span><span class="kw">get_active_rproj</span>()</span>
-<span id="cb3-26"><a href="#cb3-26"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(active_rproj)) {</span>
-<span id="cb3-27"><a href="#cb3-27"></a>    <span class="kw">message</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">"{crayon::yellow('R-project:')} {active_rproj}"</span>))</span>
-<span id="cb3-28"><a href="#cb3-28"></a>  }</span>
-<span id="cb3-29"><a href="#cb3-29"></a>}, <span class="dt">action =</span> <span class="st">"append"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set options for Rscript -e calls</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"rprofile.setup"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Call here if needed</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rprofile.setup::set_repos()</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  rprofile.setup<span class="sc">::</span><span class="fu">set_startup_options</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">interactive</span>() <span class="sc">&amp;&amp;</span> <span class="fu">requireNamespace</span>(<span class="st">"rprofile.setup"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  rprofile.setup<span class="sc">::</span><span class="fu">create_make_functions</span>()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Not RStudio OR RStudio console</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (rprofile.setup<span class="sc">::</span><span class="fu">is_terminal</span>()) {</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    rprofile.setup<span class="sc">::</span><span class="fu">set_terminal</span>()</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    rprofile.setup<span class="sc">::</span><span class="fu">set_rstudio</span>()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  .env <span class="ot">=</span> rprofile.setup<span class="sc">::</span><span class="fu">set_functions</span>()</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">attach</span>(.env)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Display wifi and no of R sessions</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Linux only</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  rprofile.setup<span class="sc">::</span><span class="fu">set_startup_info</span>()</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Prints RStudio project on start-up</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">setHook</span>(<span class="st">"rstudio.sessionInit"</span>, <span class="cf">function</span>(newSession) {</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  active_rproj <span class="ot">=</span> rprofile.setup<span class="sc">::</span><span class="fu">get_active_rproj</span>()</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(active_rproj)) {</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{crayon::yellow('R-project:')} {active_rproj}"</span>))</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>}, <span class="at">action =</span> <span class="st">"append"</span>)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="notes">Notes<a class="anchor" aria-label="anchor" href="#notes"></a>
@@ -224,7 +225,8 @@
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=rprofile" class="external-link"><img src="https://www.r-pkg.org/badges/version/rprofile" alt="CRAN status"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/csgillespie/rprofile/actions" class="external-link"><img src="https://github.com/csgillespie/rprofile/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/csgillespie/rprofile/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/csgillespie/rprofile/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://app.codecov.io/gh/csgillespie/rprofile?branch=main" class="external-link"><img src="https://codecov.io/gh/csgillespie/rprofile/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 
