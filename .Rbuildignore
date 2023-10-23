@@ -5,3 +5,4 @@
 ^README\.Rmd$
 ^\.Rprofile$
 ^\.github$
+^codecov\.yml$
