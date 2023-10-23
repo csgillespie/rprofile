@@ -9,7 +9,9 @@
 status](https://www.r-pkg.org/badges/version/rprofile)](https://CRAN.R-project.org/package=rprofile)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![R-CMD-check](https://github.com/csgillespie/rprofile/workflows/R-CMD-check/badge.svg)](https://github.com/csgillespie/rprofile/actions)
+[![R-CMD-check](https://github.com/csgillespie/rprofile/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/csgillespie/rprofile/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/csgillespie/rprofile/branch/main/graph/badge.svg)](https://app.codecov.io/gh/csgillespie/rprofile?branch=main)
 <!-- badges: end -->
 
 A package (of my) Rprofile customisations. The goal is it broaden the
@@ -107,32 +109,31 @@ repositories - `set_repos()`. Probably not needed by most people.
 Open your `.Rprofile`, e.g. `file.edit("~/.Rprofile")` and customise
 however you want. Here’s an example
 
-
     # Set options for Rscript -e calls
-    if (requireNamespace("rprofile", quietly = TRUE)) {
+    if (requireNamespace("rprofile.setup", quietly = TRUE)) {
       # Call here if needed
-      # rprofile::set_repos()
-      rprofile::set_startup_options()
+      # rprofile.setup::set_repos()
+      rprofile.setup::set_startup_options()
     }
 
-    if (interactive() && requireNamespace("rprofile", quietly = TRUE)) {
-      rprofile::create_make_functions()
+    if (interactive() && requireNamespace("rprofile.setup", quietly = TRUE)) {
+      rprofile.setup::create_make_functions()
       # Not RStudio OR RStudio console
-      if (rprofile::is_terminal()) {
-        rprofile::set_terminal()
+      if (rprofile.setup::is_terminal()) {
+        rprofile.setup::set_terminal()
       } else {
-        rprofile::set_rstudio()
+        rprofile.setup::set_rstudio()
       }
-      .env = rprofile::set_functions()
+      .env = rprofile.setup::set_functions()
       attach(.env)
       # Display wifi and no of R sessions
       # Linux only
-      rprofile::set_startup_info()
+      rprofile.setup::set_startup_info()
     }
 
     # Prints RStudio project on start-up
     setHook("rstudio.sessionInit", function(newSession) {
-      active_rproj = rprofile::get_active_rproj()
+      active_rproj = rprofile.setup::get_active_rproj()
       if (!is.null(active_rproj)) {
         message(glue::glue("{crayon::yellow('R-project:')} {active_rproj}"))
       }
