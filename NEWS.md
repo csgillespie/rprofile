@@ -1,3 +1,7 @@
+# rprofile.setup 0.2.1 _2025-02-19_
+  * feat: Add in positron support
+  * feat: Add in `test_checker()`
+
 # rprofile.setup 0.2.0 _2023-07-19_
   * feat: Rename package as there is now an {rprofile} package on CRAN
   * refactor: `get_r_sessions()` remove `greps` using `str_detect()`

@@ -1,16 +1,13 @@
 Type: Package
 Package: rprofile.setup
 Title: My Rprofile in a Handy R Package
-Version: 0.2.0
+Version: 0.2.2
 Authors@R: 
-    person(given = "Colin",
-           family = "Gillespie",
-           role = c("aut", "cre"),
-           email = "csgillespie@gmail.com")
+    person("Colin", "Gillespie", , "csgillespie@gmail.com", role = c("aut", "cre"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
-Description: My helper functions and set-up used in my
-    .Rprofile. Moving everything into a package makes it much easier to
-    have helper functions.
+Description: My helper functions and set-up used in my .Rprofile. Moving
+    everything into a package makes it much easier to have helper
+    functions.
 License: GPL-2 | GPL-3
 Imports: 
     cli,
@@ -26,6 +23,7 @@ Imports:
     rlang,
     rstudioapi,
     stringr,
+    styler,
     tibble
 Suggests:
     colorout,
@@ -36,4 +34,4 @@ Remotes:
     jalvesaq/colorout
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2

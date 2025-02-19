@@ -2,11 +2,15 @@
 % Please edit documentation in R/set-terminal.R
 \name{is_terminal}
 \alias{is_terminal}
+\alias{is_positron}
 \alias{set_terminal}
 \alias{set_rstudio}
+\alias{set_positron}
 \title{Detects R terminal}
 \usage{
 is_terminal()
+
+is_positron()
 
 set_terminal(
   rdoc = TRUE,
@@ -16,6 +20,8 @@ set_terminal(
 )
 
 set_rstudio(prettycode = TRUE)
+
+set_positron(prettycode = TRUE)
 }
 \arguments{
 \item{rdoc}{Should we load the rdoc package}
@@ -24,7 +30,7 @@ set_rstudio(prettycode = TRUE)
 
 \item{prettycode}{Should we load the prettycode package}
 
-\item{cmd_prompt}{The prompt to use. A prompt from the {prompt} package
+\item{cmd_prompt}{The prompt to use. A prompt from the `prompt` package
 could also be passed.}
 }
 \description{

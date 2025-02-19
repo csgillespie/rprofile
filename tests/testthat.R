@@ -1,2 +1,2 @@
 library("testthat")
-test_check("rprofile")
+test_check("rprofile.setup")

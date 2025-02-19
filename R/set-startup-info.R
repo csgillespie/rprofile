@@ -102,7 +102,6 @@ get_linux_internet = function() {
 }
 
 get_windows_internet = function() {
-
   wifi_name = gsub("    SSID                   : ",
                    "", system("Netsh WLAN show interfaces", intern = TRUE)[[9]])
   wifi_signal = gsub("    Signal                 : ",
