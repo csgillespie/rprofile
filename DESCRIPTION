@@ -1,24 +1,22 @@
 Type: Package
 Package: rprofile.setup
 Title: My Rprofile in a Handy R Package
-Version: 0.2.2
-Authors@R: 
+Version: 0.2.3
+Authors@R:
     person("Colin", "Gillespie", , "csgillespie@gmail.com", role = c("aut", "cre"))
 Maintainer: Colin Gillespie <csgillespie@gmail.com>
 Description: My helper functions and set-up used in my .Rprofile. Moving
     everything into a package makes it much easier to have helper
     functions.
 License: GPL-2 | GPL-3
-Imports: 
+Imports:
     cli,
     crayon,
     gert,
     glue,
-    memoise,
     memuse,
     prettycode,
     prompt,
-    rdoc,
     remotes,
     rlang,
     rstudioapi,
@@ -29,9 +27,9 @@ Suggests:
     colorout,
     testthat,
     xaringan
-Remotes: 
+Remotes:
     gaborcsardi/prompt,
     jalvesaq/colorout
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3

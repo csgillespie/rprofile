@@ -16,7 +16,9 @@ ip = function(path = getwd()) {
 #' }
 #' @export
 op = function(path = ".") {
-  if (file.exists(path)) path = normalizePath(path)
+  if (file.exists(path)) {
+    path = normalizePath(path)
+  }
   proj = list.files(path, pattern = "\\.Rproj$")
   if (grepl("\\.Rproj$", path)) {
     setwd(dirname(path))
@@ -40,19 +42,24 @@ get_shorten_paths = function(paths) {
   path_start = pmax(path_start, 0)
 
   shorten_path = vector("character", length(path_split))
-  for (i in seq_along(shorten_path)) { #nolint
+  for (i in seq_along(shorten_path)) {
+    #nolint
     p = path_split[[i]]
     p = p[path_start[i]:path_lens[i]]
     shorten_path[i] = paste(p, collapse = .Platform$file.sep)
   }
-  return(shorten_path)
+  shorten_path
 }
 
 get_rprojs = function() {
   fname = "~/.local/share/rstudio/monitored/lists/project_mru" #nolint
-  if (file.exists(fname)) return(readLines(fname))
+  if (file.exists(fname)) {
+    return(readLines(fname))
+  }
   fname = "~/.rstudio-desktop/monitored/lists/project_mru" #nolint
-  if (file.exists(fname)) return(readLines(fname))
+  if (file.exists(fname)) {
+    return(readLines(fname))
+  }
   stop("Unable to find Rproject list")
 }
 
@@ -71,8 +78,7 @@ cp = function(path = NULL) {
     return(invisible(NULL))
   }
   projs_paths = get_rprojs()
-  projs_paths = c(getwd(),
-                  projs_paths[file.exists(projs_paths)][1:9])
+  projs_paths = c(getwd(), projs_paths[file.exists(projs_paths)][1:9])
   projs_paths = projs_paths[!is.na(projs_paths)]
   projs_paths = normalizePath(projs_paths)
 
@@ -92,10 +98,16 @@ cp = function(path = NULL) {
   cat(all)
 
   proj_number = readline("Select Project: ")
-  if (nchar(proj_number) == 0) return(invisible(NULL))
+  if (nchar(proj_number) == 0) {
+    return(invisible(NULL))
+  }
   proj_number = as.numeric(proj_number)
 
-  if (is.na(proj_number)) return(invisible(NULL))
-  else if (proj_number == 0) op()
-  else op(projs_paths[proj_number + 1])
+  if (is.na(proj_number)) {
+    return(invisible(NULL))
+  } else if (proj_number == 0) {
+    op()
+  } else {
+    op(projs_paths[proj_number + 1])
+  }
 }

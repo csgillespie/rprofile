@@ -1,9 +1,11 @@
 # Add new make command.
 # Use 12345list as this should be unique
 # nolint start
-get_list_str = function()  {
-  c("rprofile-list:",
-    "\t@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ \"^[#.]\") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'")
+get_list_str = function() {
+  c(
+    "rprofile-list:",
+    "\t@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ \"^[#.]\") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'"
+  )
 }
 # nolint end
 
@@ -28,12 +30,17 @@ make_fun_factory = function(target) {
 #' @param path Location of Makefile
 #' @export
 create_make_functions = function(path = ".") {
-
   makefile_loc = file.path(path, "Makefile")
-  if (!file.exists(makefile_loc)) return(invisible(NULL))
+  if (!file.exists(makefile_loc)) {
+    return(invisible(NULL))
+  }
 
   tmp_make = create_tmp_makefile(makefile_loc)
-  make_list = system2("make", args = c("-f", tmp_make, "rprofile-list"), stdout = TRUE)
+  make_list = system2(
+    "make",
+    args = c("-f", tmp_make, "rprofile-list"),
+    stdout = TRUE
+  )
 
   # Add basic make to list
   make_list = c("", make_list)

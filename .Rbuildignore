@@ -6,3 +6,5 @@
 ^\.Rprofile$
 ^\.github$
 ^codecov\.yml$
+^[.]?air[.]toml$
+^\.vscode$

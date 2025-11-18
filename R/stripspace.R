@@ -1,7 +1,11 @@
 # Uses git stripspace to clean files.
 # Not particularly elegant code. But a quick first pass to see if I like it
 stripspace = function() {
-  fnames = list.files(pattern = "\\.R$|\\.qmd$|\\.Rmd$|\\.md$", full.names = TRUE, recursive = TRUE)
+  fnames = list.files(
+    pattern = "\\.R$|\\.qmd$|\\.Rmd$|\\.md$",
+    full.names = TRUE,
+    recursive = TRUE
+  )
   tmp = tempfile()
   for (fname in fnames) {
     hash1 = rlang::hash_file(fname)
@@ -12,5 +16,5 @@ stripspace = function() {
       system2("cat", c(tmp, ">", fname))
     }
   }
-  return(invisible(NULL))
+  invisible(NULL)
 }

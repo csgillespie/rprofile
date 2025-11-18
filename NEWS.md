@@ -1,3 +1,10 @@
+# rprofile.setup 0.2.3 _2025-11-18_
+  * refactor: Remove `{rdoc}` - it's not being maintained
+
+# rprofile.setup 0.2.2 _2025-10-29_
+  * fix: Detecting Positron didn't actually work
+  * chore: Reformatted using air
+
 # rprofile.setup 0.2.1 _2025-02-19_
   * feat: Add in positron support
   * feat: Add in `test_checker()`

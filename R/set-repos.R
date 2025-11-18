@@ -7,7 +7,8 @@
 #' set_repos(repoX = "https://example.com")
 #' }
 #' @export
-set_repos = function(CRAN = "https://cran.rstudio.com/", ...) { #nolint
+set_repos = function(CRAN = "https://cran.rstudio.com/", ...) {
+  #nolint
   repos = c(CRAN = CRAN, unlist(list(...)))
   r = getOption("repos")
   for (n in names(repos)) {
